@@ -20,6 +20,8 @@ public interface CarsDao
     
     List<Cars> getAllNewCars();
     
+    List<Cars> getAllCars();
+    
     List<Cars> getAllUsedCars();
     
     Cars addCar(Cars car);
