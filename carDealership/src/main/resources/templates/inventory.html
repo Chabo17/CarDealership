@@ -30,7 +30,7 @@
   
     <div class="container">
             <div class="col-5 m-3">
-                    <span class="h3">Used Vehicles</span>
+                    <span class="h3"  th:text="${condition} +  ' ' + Vehicles">Used</span>
             </div>
     
             <div class="row m-4 border border-dark">
@@ -38,11 +38,11 @@
                 <div class="m-5">
                     <form action="searchbox" method="POST">
                         <div class="form-group row">
-                            <label for="name" class="col-0 col-form-label">
+                            <label for="searchName" class="col-0 col-form-label">
                                 Quick Search</label>
                             <div class="col-3">
-                                <input type="text" name="name" 
-                                       id="name" class="form-control"/>
+                                <input type="text" name="searchName" 
+                                       id="searchName" class="form-control"/>
                             </div>
                             
                             

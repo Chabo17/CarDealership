@@ -14,12 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author xwang2945
  */
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
     
    @Autowired
@@ -34,10 +36,10 @@ public class AdminController {
    @Autowired
    UsersDao usersDao;
    
-   @GetMapping("admin")
+   @GetMapping("/addVehicle")
     public String displayCourses(Model model) {
         
-        return "<p>testme</p>";
+        return "inventory";
     }
     
 }
