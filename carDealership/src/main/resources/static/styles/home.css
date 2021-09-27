@@ -1,0 +1,19 @@
+#navbar {
+    background-color: white;
+}
+#jumbotron{
+    width: 95%;
+    margin: auto;
+    background-image: url("../../images/jumboBackground.jpg");
+    background-size: cover;
+    height: 400px;
+    text-align: center;
+
+}
+.jumbotron:hover {
+
+}
+
+.display-4{
+    margin: auto;
+}
