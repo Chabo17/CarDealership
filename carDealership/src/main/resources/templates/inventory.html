@@ -103,13 +103,22 @@
                     <table class="table table-striped">
                         <tbody>
                             <tr th:each="car : ${carsfiltered}">
-                                <td th:text="${course.id}">Course ID</td>
-                                <td th:text='${course.name}'>Course Name</td>
-                                <td th:text="${course.teacher.firstName + ' ' 
-                                    + course.teacher.lastName}">Teacher  Name</td>
-                                <td><a href="#" th:href="@{/courseDetail(id=${course.id})}">Details</a></td>
-                                <td><a href="#" th:href="@{/editCourse(id=${course.id})}">Edit</a></td>
-                                <td><a href="#" th:href="@{/deleteCourse(id=${course.id})}">Delete</a></td>
+                                <td>
+                                    <div class="container">
+                                        <div class="row col-4" >
+                                             <div class="col-md-1" th:text="${car.year + ' ' car.make + ' ' + car.model}">year make model</div>
+                                        </div>
+                                        
+                         
+                                        
+                                        <a href="#" th:href="@{/deleteCourse(id=${course.id})}">Delete</a>
+                                        
+                                    </div>
+                                    
+                                </td>
+                                
+                                
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
