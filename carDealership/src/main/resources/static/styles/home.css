@@ -9,22 +9,27 @@
     background-size: cover;
     text-align: center;
     transition: transform .3s;
+    font-family: URW Chancery L, cursive;
+    color: black;
 }
-.jumbotron:hover {
+#jumbotron:hover {
     transform: scale(1.1);
 }
 
-.jumbotron.headline{
-    margin: auto;
-}
-#jumbotron h1{
-    color: black;
-    font-family: Bradley Hand, cursive;
+#jumbotron h2{
+    padding: 25px;
 }
 
-#jumbotron h2{
-    color: black;
-    padding: 25px;
-    font-family: URW Chancery L, cursive;
+#jumbotron a{
+    background-color: red;
+}
+#jumbotron a:hover{
+    background: green;
 }
 /*---------------Jumbo Section End-------------*/
+
+#featured {
+    text-align: center;
+    margin: auto;
+    font-family: Andale Mono, monospace;
+}
