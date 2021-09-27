@@ -1,19 +1,30 @@
 #navbar {
     background-color: white;
 }
+/*---------------Jumbo Section Start-------------*/
 #jumbotron{
     width: 95%;
     margin: auto;
     background-image: url("../../images/jumboBackground.jpg");
     background-size: cover;
-    height: 400px;
     text-align: center;
-
+    transition: transform .3s;
 }
 .jumbotron:hover {
-
+    transform: scale(1.1);
 }
 
-.display-4{
+.jumbotron.headline{
     margin: auto;
 }
+#jumbotron h1{
+    color: black;
+    font-family: Bradley Hand, cursive;
+}
+
+#jumbotron h2{
+    color: black;
+    padding: 25px;
+    font-family: URW Chancery L, cursive;
+}
+/*---------------Jumbo Section End-------------*/
