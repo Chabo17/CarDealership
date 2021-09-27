@@ -45,7 +45,7 @@ public class InventoryController {
         // Uncomment to make effective
         
         // List<Cars> usedcars = carsDao.getAllUsedCars();
-        // model.addAttribute("cars", usedcars);
+        // model.addAttribute("inventory", usedcars);
         // return "inventory";
         
         //POL
