@@ -140,6 +140,7 @@ public class CarsDaoDbImpl implements CarsDao {
     }
 
     @Override
+    @Transactional
     public void deleteCarById(int id) 
     {
         final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
