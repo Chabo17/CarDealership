@@ -1,5 +1,11 @@
-#navbar {
+#navbar{
     background-color: white;
+}
+
+#navbar a{
+    margin-left:35px;
+    color: black;
+    font-family: Bradley Hand, cursive;
 }
 /*---------------Jumbo Section Start-------------*/
 #jumbotron{
