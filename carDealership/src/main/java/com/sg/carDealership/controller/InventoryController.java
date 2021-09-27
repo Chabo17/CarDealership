@@ -9,6 +9,8 @@ import com.sg.carDealership.dao.CarsDao;
 import com.sg.carDealership.dao.InquireDao;
 import com.sg.carDealership.dao.SpecialsDao;
 import com.sg.carDealership.dao.UsersDao;
+import com.sg.carDealership.dto.Cars;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +38,19 @@ public class InventoryController {
    
    @GetMapping("/used")
     public String showUsedSearch(Model model) {
+    /*
+        // Pierre
+        // Added these commented lines
+        
+        // Uncomment to make effective
+        
+        // List<Cars> usedcars = carsDao.getAllUsedCars();
+        // model.addAttribute("cars", usedcars);
+        // return "inventory";
+        
+        //POL
+    */
+        
         model.addAttribute("condition", "Used");
         return "inventory";
     }
