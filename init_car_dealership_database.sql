@@ -49,3 +49,23 @@ CREATE TABLE specials(
     FOREIGN KEY (carId) REFERENCES cars(id)
     
 );
+
+
+
+
+CREATE TABLE sales_information_record(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    s_i_names VARCHAR(50),
+    s_i_phone VARCHAR(20),
+    s_i_street_1 VARCHAR(50),
+    s_i_street_2 VARCHAR(50),
+    s_i_city VARCHAR(20),
+    s_i_state VARCHAR(2),
+    s_i_zipcode  VARCHAR(10),
+    s_r_purchase_price DOUBLE,
+    s_r_purchase_type VARCHAR(30),
+    user_id INT,
+    car_id INT,
+	FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (car_id) REFERENCES cars(id)
+);
