@@ -45,7 +45,8 @@ public class InventoryController {
         // Uncomment to make effective
         
         // List<Cars> usedcars = carsDao.getAllUsedCars();
-        // model.addAttribute("inventory", usedcars);
+        // model.addAttribute("condition", "Used");             // IDK if this line is still useful
+        // model.addAttribute("myInventory", usedcars);
         // return "inventory";
         
         //POL
@@ -56,6 +57,19 @@ public class InventoryController {
     }
    @GetMapping("/new")
     public String showNewSearch(Model model) {
+         /*
+        // Pierre
+        // Added these commented lines
+        
+        // Uncomment to make effective
+        
+        // List<Cars> usedcars = carsDao.getAllNewCars();
+        // model.addAttribute("condition", "New");              // IDK if this line is still useful
+        // model.addAttribute("myInventory", usedcars);         // call text="${myInventory.attribute}" attribute in inventory.html
+        // return "inventory";                                  // lead to inventory.html
+        
+        //POL
+    */
         model.addAttribute("condition", "New");
         return "inventory";
     }
