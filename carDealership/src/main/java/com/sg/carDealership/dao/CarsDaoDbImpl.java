@@ -148,6 +148,13 @@ public class CarsDaoDbImpl implements CarsDao {
         
         
     }
+
+    @Override
+    public List<Cars> getAllCars() 
+    {
+        final String SELECT_ALL_NEW_CARS = "SELECT * FROM cars";
+        return jdbc.query(SELECT_ALL_NEW_CARS, new CarMapper());    
+    }
     
     
     

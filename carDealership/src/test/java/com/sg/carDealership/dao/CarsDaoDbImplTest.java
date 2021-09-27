@@ -121,7 +121,29 @@ public class CarsDaoDbImplTest {
      * Test of getAllNewCars method, of class CarsDaoDbImpl.
      */
     @Test
-    public void testGetAllNewCars() {
+    public void testGetAllNewCars() 
+    {
+        Cars car1 = new Cars();
+        car1.setBodyStyle("low");
+        car1.setCarDescription("Beautiful");
+        car1.setCarName("Civic");
+        car1.setCarType("Sport");
+        car1.setColor("Sunset");
+        car1.setInteriorColor("Leather");
+        car1.setMake("Honda");
+        car1.setMakeYear(2021);
+        car1.setMileage(0);
+        car1.setModel("Honda Civic");
+        car1.setMsrp(20000);
+        car1.setNewCar(true);
+        car1.setPictureURL("www.thisisanurl.co.uk");
+        car1.setTrans("Automatic");
+        car1.setVinNumber("#A21FDS6U9ER4Y46H");
+
+        car1.setSalesPrice(18000);
+        
+        car1 = carDao.addCar(car1);
+        
     }
 
     /**
