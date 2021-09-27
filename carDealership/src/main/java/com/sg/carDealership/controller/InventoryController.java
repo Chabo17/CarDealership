@@ -5,10 +5,13 @@
  */
 package com.sg.carDealership.controller;
 
+import org.springframework.stereotype.Controller;
+
 /**
  *
- * @author pierre
+ * @author xwang2945
  */
-public class carController {
+@Controller
+public class InventoryController {
     
 }
