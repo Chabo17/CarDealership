@@ -11,7 +11,7 @@
 #jumbotron{
     width: 95%;
     margin: auto;
-    background-image: url("../../images/jumboBackground.jpg");
+    background-image: url("../jumboBackground.jpg");
     background-size: cover;
     text-align: center;
     transition: transform .3s;
