@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Admin add a new car form</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Additional CSS files here -->
+
+  </head>
+  <body>
+
+
+ <!--- Container for Contact us -->
+    
+    
+    <div id = "contactUs" class = "col-md-12 row">       
+        <form role = "form" id ="contactForm" action="/admin/addCar" method="POST">
+
+            <div class="form-group row">
+                            <label for="make" class="col-6 col-form-label">
+                                Make</label>
+                            
+                            <div class="col-6">
+                                <select id="make" name="make" class="form-control" >
+                                    <option th:each="make : ${makeList}"
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Audi</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="form-group row">
+                            <label for="model" class="col-6 col-form-label">
+                                Model</label>
+                            
+                            <div class="col-6">
+                                <select id="model" name="model" class="form-control" >
+                                    <option th:each="make : ${modelList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        A4</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="form-group row">
+                            <label for="type" class="col-6 col-form-label">
+                                Body Type</label>
+                            
+                            <div class="col-6">
+                                <select id="carType" name="carType" class="form-control" >
+                                    <option th:each="make : ${typeList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        A4</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="form-group row">
+                            <label for="body" class="col-6 col-form-label">
+                                Body Style</label>
+                            
+                            <div class="col-6">
+                                <select id="bodyStyle" name="bodyStyle" class="form-control" >
+                                    <option th:each="make : ${bodyList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Car</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+            
+                        <div class="form-group row">
+                            <label for="body" class="col-6 col-form-label">
+                                Year</label>
+                            
+                            <div class="col-6">
+                                <input type="text" name="year" 
+                                       id="addYear" class="form-control"/>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="form-group row">
+                            <label for="trans" class="col-6 col-form-label">
+                                Transmission</label>
+                            
+                            <div class="col-6">
+                                <select id="trans" name="trans" class="form-control" >
+                                    <option th:each="make : ${transList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Automatic</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="color" class="col-6 col-form-label">
+                                Color</label>
+                            
+                            <div class="col-6">
+                                <select id="color" name="color" class="form-control" >
+                                    <option th:each="make : ${colorList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Black</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="form-group row">
+                            <label for="interior" class="col-6 col-form-label">
+                                Interior</label>
+                            
+                            <div class="col-6">
+                                <select id="interior" name="interiorColor" class="form-control" >
+                                    <option th:each="make : ${interList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Black</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                       
+                        
+                        <div class="form-group row">
+                            <label for="mileage" class="col-6 col-form-label">
+                                Mileage</label>
+                            
+                            <div class="col-6">
+                                <input type="text" name="mileage" 
+                                       id="addMileage" class="form-control"/>
+                            </div>
+                            
+                        </div>
+                   
+                        <div class="form-group row">
+                            <label for="vinNumber" class="col-6 col-form-label">
+                               Vin Number</label>
+                            
+                            <div class="col-6">
+                                <input type="text" name="vinNumber" 
+                                       id="addVinNumber" class="form-control"/>
+                            </div>
+                            
+                        </div>
+                        
+            
+                        <div class="form-group row">
+                            <label for="msrp" class="col-6 col-form-label">
+                                M.S.R.P.</label>
+                            
+                            <div class="col-6">
+                                <input type="text" name="msrp" 
+                                       id="addMsrp" class="form-control"/>
+                            </div>
+                            
+                        </div>
+                        
+                        
+            
+                        <div class="form-group row">
+                            <label for="salesPrice" class="col-6 col-form-label">
+                                Sales Price</label>
+                            
+                            <div class="col-6">
+                                <input type="text" name="salesPrice" 
+                                       id="addSalesPrice" class="form-control"/>
+                            </div>
+                            
+                        </div>
+            
+                        
+                        <div class="form-group row">
+                            <label for="description" class="col-6 col-form-label">
+                                Description</label>
+                            
+                            <div class="col-6">
+                                <textarea id="addDescription" name="description" rows="4" cols="50">
+                                </textarea>
+                            </div>
+                            
+                        </div>
+            
+            
+                        <div class="form-group row">
+                            <label for="carName" class="col-6 col-form-label">
+                                Car Name</label>
+                            
+                            <div class="col-6">
+                                <input type="text" name="carName" 
+                                       id="addCarName" class="form-control"/>
+                            </div>
+                            
+                        </div>
+            
+            
+                        <div class="form-group row">
+                            <label for="pictureURL" class="col-6 col-form-label">
+                                Picture URL</label>
+                            
+                            <div class="col-6">
+                                <input type="text" name="pictureURL" 
+                                       id="addPictureURL" class="form-control"/>
+                            </div>
+                            
+                        </div>
+            
+                        
+            
+            <div class="col-md-6 row">
+                <button type="submitButton"
+                    id="submitButton"
+                    class="btn btn-primary"
+                    >
+                    Save
+                </button>
+            </div>
+           
+            
+            
+            <!--
+            
+            <h1 style ="font-family:verdana;">Contact Us</h1>
+            <div class="form-group row col-md-3">
+                <label for="name" class="col-md-12 control-label">
+                    <td style="font: size 25px; ">Name</td>
+                    <input type="text" 
+                    class="form-control"
+                    id="addTitle"
+                    placeholder="Name" 
+                    style ="width: 300px;"
+                    required> 
+                </label>
+            </div>
+            
+
+            <div class="form-group row col-md-3">
+                <label for="email" class="col-md-3 control-label">   
+                    <td style="font: size 25px; ">Email</td>
+                    <input type="email" 
+                    class="form-control"
+                    id="addTitle"
+                    placeholder="Email" 
+                    style ="width: 300px;"
+                    required> 
+                </label>
+            </div>
+
+            <div class="form-group row col-md-3">
+                <label for="phone" class="col-md-3 control-label">   
+                    <td style="font: size 25px; ">Phone</td>
+                    <input type="phone" 
+                    class="form-control"
+                    id="addTitle"
+                    placeholder="Phone" 
+                    style ="width: 300px;"
+                    required> 
+                </label>
+            </div>
+            <div class="form-group row  col-md-3">
+                <label for="Message" class="col-md-3 control-label">   
+                    <td style="font: size 25px; ">Message</td>
+                    <textarea class="scrollabletextbox" name="Message" style = "height: 210px; width: 300px;">
+                      </textarea>
+                </label>
+            </div>
+            <form action="" > 
+            <div class="col-md-3 row">
+                <button type="submitButton"
+                    id="submitButton"
+                    class="btn btn-primary"
+                    >
+                    Submit
+                </button>
+            </div>
+            
+           
+            
+            </form>
+            
+            -->
+        
+        </form>
+            
+
+
+        </div>
+
+        <!-- submit button -->
+
+    </div>
+    
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- use the the full jQuery build, NOT the slim build-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      
+    <!-- custom js files -->
+    <script src="specials.js"></script>
+    <!---GitHub\carDealership\CarDealership\carDealership\src\main\resources\static\scripts -->
+
+    </body>
+</html>
