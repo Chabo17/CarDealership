@@ -24,6 +24,8 @@ public interface CarsDao
     
     List<Cars> getAllUsedCars();
     
+    List<Cars> getFeaturedCars();
+    
     Cars addCar(Cars car);
     
     void updateCar(Cars car);

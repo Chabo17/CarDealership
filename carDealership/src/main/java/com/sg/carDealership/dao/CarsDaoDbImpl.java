@@ -155,6 +155,12 @@ public class CarsDaoDbImpl implements CarsDao {
         final String SELECT_ALL_NEW_CARS = "SELECT * FROM cars";
         return jdbc.query(SELECT_ALL_NEW_CARS, new CarMapper());    
     }
+
+    @Override
+    public List<Cars> getFeaturedCars() {
+        final String SELECT_ALL_NEW_CARS = "SELECT * FROM cars LIMIT 8";
+        return jdbc.query(SELECT_ALL_NEW_CARS, new CarMapper());
+    }
     
     
     
