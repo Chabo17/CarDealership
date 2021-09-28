@@ -1,9 +1,6 @@
 package com.sg.carDealership.dao;
 
-import com.sg.carDealership.dto.Cars;
-import com.sg.carDealership.dto.Sales_Information_Record;
 import com.sg.carDealership.dto.Users;
-import org.apache.catalina.User;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,18 +10,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UsersDaoDbImplTest {
 
     @Autowired
     UsersDao userDao;
 
-    @Autowired
-    CarsDao carDao;
-
-    @Autowired
-    Sales_Information_Record_Dao sirDao;
-
-    UsersDaoDbImplTest(){}
+    UsersDaoDbImplTest() {
+    }
 
     @BeforeAll
     public static void setUpClass() {
@@ -44,54 +37,61 @@ class UsersDaoDbImplTest {
     }
 
     /////////////
-
     @Test
-    void getUserById() {
-        Users user = new Users();
-        user.setId(01);
-        user.setFirstName("Van");
-        user.setLastName("Diesel");
-        user.setEmail("diesel@gmail.com");
-        user.setUserPassword("fastAndTedious");
-        user.setUserRole("Admin");
+    @Order(1)
+    void testAddGetUser() {
+        Users user1 = new Users();
+        user1.setFirstName("Van");
+        user1.setLastName("Diesel");
+        user1.setEmail("diesel@gmail.com");
+        user1.setUserPassword("fastAndTedious");
+        user1.setUserRole("Admin");
+        userDao.addUser(user1);
 
-        userDao.addUser(user);
+        Users user2 = new Users();
+        user2.setFirstName("Jamie");
+        user2.setLastName("Choco");
+        user2.setEmail("jchoho@gmail.com");
+        user2.setUserPassword("bigger");
+        user2.setUserRole("User");
+        userDao.addUser(user2);
 
-        Users returnedValue = userDao.getUserById(user.getId());
-        System.out.println(user.getId());
+        Users returnedValue = userDao.getUserById(user2.getId());
 
-        assertEquals(user, returnedValue, "UsersDaoDbImplTest.java : TEST 1");
+        assertEquals(user2, returnedValue, "UsersDaoDbImplTest.java : TEST 1");
     }
 
     @Test
-    void testAddGetUser() {
+    @Order(2)
+    void updateUser() {
         Users user = new Users();
-        user.setId(01);
-        user.setFirstName("Van");
-        user.setLastName("Diesel");
-        user.setEmail("diesel@gmail.com");
-        user.setUserPassword("fastAndTedious");
-        user.setUserRole("Admin");
+        user.setId(1);
+        user.setFirstName("Ben");
+        user.setLastName("Jizzel");
+        user.setEmail("jizzel@gmail.com");
+        user.setUserPassword("badboy");
+        user.setUserRole("User");
 
-        userDao.addUser(user);
-
-        Users returnedValue = userDao.getUserById(user.getId());
-        System.out.println(user.getId());
-
+        userDao.updateUser(user);
+        Users returnedValue = userDao.getUserById(1);
         assertEquals(user, returnedValue, "UsersDaoDbImplTest.java : TEST 2");
     }
 
-
     @Test
+    @Order(3)
     void getAllUsers() {
-
+        List<Users> testList = userDao.getAllUsers();
+        assertEquals(2, testList.size(), "UsersDaoDbImplTest.java : TEST 3");
     }
 
+    /**
+     * This will remove everything created in the SQL table
+     */
     @Test
-    void updateUser() {
-    }
-
-    @Test
+    @Order(4)
     void deleteUserById() {
+        userDao.deleteUserById(1);
+        userDao.deleteUserById(2);
+        assertEquals(null, userDao.getUserById(1), "UsersDaoDbImplTest.java : TEST 4");
     }
 }
