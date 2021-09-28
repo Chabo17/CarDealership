@@ -7,6 +7,7 @@ package com.sg.carDealership.dao;
 
 import com.sg.carDealership.dto.Cars;
 import com.sg.carDealership.dto.Sales_Information_Record;
+import com.sg.carDealership.dto.Specials;
 import com.sg.carDealership.dto.Users;
 import java.util.List;
 
@@ -38,6 +39,9 @@ public class CarsDaoDbImplTest {
     @Autowired
     Sales_Information_Record_Dao sirDao;
     
+    @Autowired
+    SpecialsDao SDao;
+    
     
     public CarsDaoDbImplTest() {
     }
@@ -52,6 +56,14 @@ public class CarsDaoDbImplTest {
     
     @BeforeEach
     public void setUp() {
+        
+        List<Specials> S = SDao.getAllSpecials();
+        for(Specials sir : S)
+        {
+            SDao.deleteSpecialById(sir.getId());
+        }
+        
+        
         List<Sales_Information_Record> sirs = sirDao.getALLSIR();
         for(Sales_Information_Record sir : sirs)
         {
