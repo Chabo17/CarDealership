@@ -36,6 +36,10 @@ public class InventoryController {
    @Autowired
    UsersDao usersDao;
    
+   private String condition="new";
+
+   
+   
    @GetMapping("/used")
     public String showUsedSearch(Model model) {
     /*
@@ -53,6 +57,7 @@ public class InventoryController {
     */
         
         model.addAttribute("condition", "Used");
+        condition = "used";
         return "inventory";
     }
    @GetMapping("/new")
@@ -71,6 +76,7 @@ public class InventoryController {
         //POL
     */
         model.addAttribute("condition", "New");
+        condition="new";
         return "inventory";
     }
    

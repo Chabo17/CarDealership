@@ -9,6 +9,7 @@ import com.sg.carDealership.dao.CarsDao;
 import com.sg.carDealership.dao.InquireDao;
 import com.sg.carDealership.dao.SpecialsDao;
 import com.sg.carDealership.dao.UsersDao;
+import com.sg.carDealership.dto.Cars;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,10 +37,23 @@ public class AdminController {
    @Autowired
    UsersDao usersDao;
    
-   @GetMapping("/addVehicle")
-    public String displayCourses(Model model) {
-        
-        return "inventory";
+   @GetMapping
+    public String showAdminPage(Model model) {
+        return "admin";
+    }
+    
+    @GetMapping("cars")
+    public String displayCars(Model model) {
+        //List<Cars> cars = carsDao.getAllCars();
+        //model.addAttribute("cars", cars);
+        return "cars";
+    }
+    
+    @GetMapping("users")
+    public String displayUsers(Model model) {
+        //List<Cars> cars = carsDao.getAllCars();
+        //model.addAttribute("cars", cars);
+        return "users";
     }
     
 }
