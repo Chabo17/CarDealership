@@ -49,7 +49,15 @@ public class HomeController
         
         return "specials";
     }
- 
+    
+    
+    @GetMapping("/inquire")
+    public String displayInquires(Model model) {
+   
+        return "inquire";
+    }
+    
+    
     
     @PostMapping("/addInquire")
     public String addSpecial(String name, String email, String phone, String message)
