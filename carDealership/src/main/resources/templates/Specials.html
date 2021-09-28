@@ -26,7 +26,13 @@
 
         <!-- we will add data rows dynamically to the tbody -->
         <p style="padding: 10px; border: 3px solid black;">
-        <tbody id="contentRows"></tbody>
+        <tbody>
+            <tr th:each="special : ${specials}">
+                <td th:text="${special.carId}">Car ID</td>
+                <td th:text="${special.message}">Message</td>
+            </tr>
+        </tbody>
+
         </p>
     </table> 
     </div> 
@@ -109,7 +115,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
       
     <!-- custom js files -->
-    <script src="..\scripts\Specials.js"></script>
+    <script src="specials.js"></script>
     <!---GitHub\carDealership\CarDealership\carDealership\src\main\resources\static\scripts -->
 
     </body>
