@@ -16,10 +16,7 @@ function loadSpecials() {
         success: function(contactArray) {
             $.each(contactArray, function(index, contact){
                 var id = contact.id;
-                var title = contact.title;
-                var notes = contact.notes;
-                var pic = contact.pic;
-
+                var message = contact.title;
                 
                 // <!--- need on clicks --->
                 var row = '<tr>';
