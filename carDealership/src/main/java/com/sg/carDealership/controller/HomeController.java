@@ -70,10 +70,8 @@ public class HomeController
         inquire.setMessage(message);
         
         inquireDao.addInquire(inquire);
-        
-        
+
         return "index";
-        
     }
     
     
