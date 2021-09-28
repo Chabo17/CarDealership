@@ -53,10 +53,10 @@ public class UsersDaoDbImpl implements UsersDao
                 + "VALUES(?,?,?,?,?)";
         jdbc.update(INSERT_USER,
                 user.getFirstName(),
-                user.getLastName());
-                user.getEmail();
-                user.getUserPassword();
-                user.getUserRole();
+                user.getLastName(),
+                user.getEmail(),
+                user.getUserPassword(),
+                user.getUserRole());
         
         int newId = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
         user.setId(newId);

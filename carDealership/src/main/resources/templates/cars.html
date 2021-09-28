@@ -39,83 +39,217 @@
                     <a href="/admin/users" class="btn btn-outline-primary btn-lg">Users</a>
                 </div>
             </div>
+
+                
             <div class="row m-4 border border-dark">
                 <div class="col text-center m-3">
                     <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Teacher</th>
-                                <th>Details</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
                         <tbody>
-                            <tr th:each="course : ${courses}">
-                                <td th:text="${course.id}">Course ID</td>
-                                <td th:text='${course.name}'>Course Name</td>
-                                <td th:text="${course.teacher.firstName + ' ' 
-                                    + course.teacher.lastName}">Teacher  Name</td>
-                                <td>><a href="#" th:href="@{/courseDetail(id=${course.id})}">Details</a></td>
-                                <td><a href="#" th:href="@{/editCourse(id=${course.id})}">Edit</a></td>
-                                <td><a href="#" th:href="@{/deleteCourse(id=${course.id})}">Delete</a></td>
+                            <tr th:each="car : ${carsfiltered}">
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-12 text-left">
+                                            <div class="well"><div class="col-md-4" th:text="${car.year + ' ' car.make + ' ' + car.model}">year make model</div></div>
+                                        </div>
+                                    </div>     
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="well"><img src="test.jpg" class="rounded float-left" alt="...">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well">Body Style</div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well">Interior</div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="well">Sale Price</div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well">Trans</div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well">Mileage</div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="well">MSRP</div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well">Color</div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well">Vin#</div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="well"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <div class="well"><a href="#" th:href="@{/deleteCourse(id=${course.id})}">Edit</a></div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
     
+    
+    
+    
+    
+    
+    
+    
+    
                            <div class="row m-4 border border-dark">
                 <div class="col-3 text-center m-3">
                     <span class="h3">Add Cars</span>
                 </div>
                 <div class="col-7 text-center m-3">
-                    <form action="addCourse" method="POST">
+                    <form action="addCars" method="POST">
                         <div class="form-group row">
-                            <label for="name" class="col-3 col-form-label">
-                                Name</label>
+                            <label for="make" class="col-3 col-form-label">
+                                Make</label>
+                            
                             <div class="col-9">
-                                <input type="text" name="name" 
-                                       id="name" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="description" class="col-3 col-form-label">
-                                Description</label>
-                            <div class="col-9">
-                                <input type="text" name="description" 
-                                       id="description" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="teacher" class="col-3 col-form-label">
-                                Teacher</label>
-                            <div class="col-9">
-                                <select id="teacher" name="teacherId" class="form-control" >
-                                    <option th:each="teacher : ${teachers}" 
-                                            th:value="${teacher.id}" 
-                                            th:text="${teacher.firstName + ' ' 
-                                                + teacher.lastName}">
-                                        Teacher Name</option>
+                                <select id="make" name="makelist" class="form-control" >
+                                    <option th:each="make : ${makeList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Audi</option>
                                 </select>
                             </div>
+                            
                         </div>
+                        
+                        
                         <div class="form-group row">
-                            <label for="students" class="col-3 col-form-label">
-                                Students</label>
+                            <label for="model" class="col-3 col-form-label">
+                                Model</label>
+                            
                             <div class="col-9">
-                                <select multiple id="students" name="studentId" 
-                                        class="form-control" >
-                                    <option th:each="student : ${students}" 
-                                            th:value="${student.id}" 
-                                            th:text="${student.firstName + ' ' 
-                                                + student.lastName}">
-                                        Student Name</option>
+                                <select id="make" name="modelList" class="form-control" >
+                                    <option th:each="make : ${modelList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        A4</option>
                                 </select>
                             </div>
+                            
                         </div>
+                        
+                        
+                        <div class="form-group row">
+                            <label for="type" class="col-3 col-form-label">
+                                Type</label>
+                            
+                            <div class="col-9">
+                                <select id="make" name="typeList" class="form-control" >
+                                    <option th:each="make : ${typeList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        A4</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="form-group row">
+                            <label for="body" class="col-3 col-form-label">
+                                Body Style</label>
+                            
+                            <div class="col-9">
+                                <select id="make" name="bodyList" class="form-control" >
+                                    <option th:each="make : ${bodyList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Car</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="form-group row">
+                            <label for="trans" class="col-3 col-form-label">
+                                Transmission</label>
+                            
+                            <div class="col-9">
+                                <select id="trans" name="transList" class="form-control" >
+                                    <option th:each="make : ${transList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Automatic</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="color" class="col-3 col-form-label">
+                                Color</label>
+                            
+                            <div class="col-9">
+                                <select id="color" name="colorList" class="form-control" >
+                                    <option th:each="make : ${colorList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Black</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="form-group row">
+                            <label for="interior" class="col-3 col-form-label">
+                                Interior</label>
+                            
+                            <div class="col-9">
+                                <select id="interior" name="interList" class="form-control" >
+                                    <option th:each="make : ${interList}" 
+                                            th:value="${make}" 
+                                            th:text="${make}">
+                                        Black</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                       
+                        
+                        
+                   
+                        
+                        
+                        
                         <button type="submit" class="btn btn-primary">Add Course</button>
                     </form>
                 </div>
