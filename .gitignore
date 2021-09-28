@@ -2,3 +2,5 @@
 .xml
 /carDealership/target/
 /carDealership/nbproject/
+carDealership/src/main/resources/application.properties
+carDealership/src/test/resources/application.properties
