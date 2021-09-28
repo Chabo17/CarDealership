@@ -81,21 +81,21 @@ public class AdminController {
     {
         Cars newcar = new Cars();
         
-                                                                        newcar.setMake(make);
-                                                                        newcar.setModel(model);
-                                                                        newcar.setCarType(carType);
-                                                                        newcar.setBodyStyle(bodyStyle);
-                                                                        newcar.setMakeYear(Integer.parseInt(year));
-                                                                        newcar.setTrans(trans);
-                                                                        newcar.setColor(color);
-                                                                        newcar.setInteriorColor(interiorColor);
-                                                                        newcar.setMileage(Integer.parseInt(mileage));
-                                                                        newcar.setVinNumber(vinNumber);
-                                                                        newcar.setMsrp(Double.parseDouble(msrp));
-                                                                        newcar.setSalesPrice(Double.parseDouble(salesPrice));
-                                                                        newcar.setCarDescription(description);
-                                                                        newcar.setNewCar(newcar.getMakeYear() == 2021);
-        
+        newcar.setMake(make);
+        newcar.setModel(model);
+        newcar.setCarType(carType);
+        newcar.setBodyStyle(bodyStyle);
+        newcar.setMakeYear(Integer.parseInt(year));
+        newcar.setTrans(trans);
+        newcar.setColor(color);
+        newcar.setInteriorColor(interiorColor);
+        newcar.setMileage(Integer.parseInt(mileage));
+        newcar.setVinNumber(vinNumber);
+        newcar.setMsrp(Double.parseDouble(msrp));
+        newcar.setSalesPrice(Double.parseDouble(salesPrice));
+        newcar.setCarDescription(description);
+        newcar.setNewCar(newcar.getMakeYear() == 2021);
+
         
         newcar.setCarName(carName);
         newcar.setPictureURL(pictureURL);
