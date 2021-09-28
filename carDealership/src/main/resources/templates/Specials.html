@@ -20,13 +20,10 @@
 
     <!--container for Specials -->
     
-    <div id="Specials"  >
+    <div id="Specials">  
         <h2><a href = "" onclick = "showContactUs(); return false;">Specials</a></h2> 
         <table id="SpecialsTable" class="table table-hover">
-            <thead>
-                
-            </tr>
-            </thead>
+
         <!-- we will add data rows dynamically to the tbody -->
         <p style="padding: 10px; border: 3px solid black;">
         <tbody id="contentRows"></tbody>
@@ -56,7 +53,7 @@
             <div class="form-group row col-md-3">
                 <label for="email" class="col-md-3 control-label">   
                     <td style="font: size 25px; ">Email</td>
-                    <input type="text" 
+                    <input type="email" 
                     class="form-control"
                     id="addTitle"
                     placeholder="Email" 
@@ -68,7 +65,7 @@
             <div class="form-group row col-md-3">
                 <label for="phone" class="col-md-3 control-label">   
                     <td style="font: size 25px; ">Phone</td>
-                    <input type="text" 
+                    <input type="phone" 
                     class="form-control"
                     id="addTitle"
                     placeholder="Phone" 
@@ -83,23 +80,26 @@
                       </textarea>
                 </label>
             </div>
+            <div class="col-md-3 row">
+                <button type="button"
+                    id="submitButton"
+                    class="btn btn-primary">
+                    Submit
+                </button>
+            </div>
 
         </form>
             <div class="col-md-6">        
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12736.505095655499!2d-121.61166434721699!3d37.05447393211527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8091e1b50ce0ebe9%3A0x2ba4b4c4662c920d!2sLJB%20Farms!5e0!3m2!1sen!2sus!4v1632768046503!5m2!1sen!2sus" width="450" height="450" style="border: 1px;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <!-- submit button -->
-            <div class="col-md-3">
-                <button type="button"
-                   id="submitButton"
-                   class="btn btn-primary">
-                   Submit
-                </button>
-            </div>
+
         </div>
 
+        <!-- submit button -->
+
     </div>
+
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -109,7 +109,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
       
     <!-- custom js files -->
-    <script src="Specials.js"></script>
+    <script src="..\scripts\Specials.js"></script>
+    <!---GitHub\carDealership\CarDealership\carDealership\src\main\resources\static\scripts -->
 
     </body>
 </html>
