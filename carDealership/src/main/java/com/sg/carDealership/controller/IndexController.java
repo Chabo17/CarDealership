@@ -20,8 +20,10 @@ public class IndexController {
 
     @GetMapping("/featured")
     public String displayFeaturedCars(Model model){
-        List<Cars> carList = carDao.getFeaturedCars();
-        model.addAttribute("featuredCars", carList);
+        List<Cars> cars = carDao.getFeaturedCars();
+        boolean isLoaded = cars.size() == 8;
+        model.addAttribute("isLoaded", isLoaded);
+        model.addAttribute("featuredCars", cars);
         return "featured";
     }
 
