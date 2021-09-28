@@ -1,14 +1,16 @@
-#navbar{
+
+#navbar {
     background-color: white;
 }
 
-#navbar a{
-    margin-left:35px;
+#navbar a {
+    margin-left: 35px;
     color: black;
     font-family: Bradley Hand, cursive;
 }
+
 /*---------------Jumbo Section Start-------------*/
-#jumbotron{
+#jumbotron {
     width: 95%;
     margin: auto;
     background-image: url("../jumboBackground.jpg");
@@ -18,24 +20,49 @@
     font-family: URW Chancery L, cursive;
     color: black;
 }
+
 #jumbotron:hover {
     transform: scale(1.1);
 }
 
-#jumbotron h2{
+#jumbotron h2 {
     padding: 25px;
 }
 
-#jumbotron a{
+#jumbotron a {
     background-color: red;
 }
-#jumbotron a:hover{
+
+#jumbotron a:hover {
     background: green;
 }
+
 /*---------------Jumbo Section End-------------*/
 
 #featured {
+    width: 95%;
     text-align: center;
     margin: auto;
     font-family: Andale Mono, monospace;
+}
+
+#featuredHeadline{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.parentBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.childBox {
+    flex: 1 0 21%; /* So it makes 4 boxes per line (21*4=84), will never make the 5th box (needs 100)*/
+    margin: 10px;
+    height: 200px;
+    background-color: wheat;
+    transition: transform .3s;
+}
+
+.childBox:hover {
+    transform: scale(1.05);
 }
