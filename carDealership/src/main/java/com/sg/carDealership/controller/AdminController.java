@@ -84,6 +84,12 @@ public class AdminController {
     @PostMapping("addCars")
     public String addCar(Cars car, HttpServletRequest request) {
         String makeChoice = request.getParameter("makelist");
+        String modelChoice = request.getParameter("modelList");
+        String typeChoice = request.getParameter("typeList");
+        String colorChoice = request.getParameter("colorList");
+        String interiorChoice = request.getParameter("makelist");
+        
+        
         
 //        String[] studentIds = request.getParameterValues("studentId");
 //        
