@@ -12,6 +12,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -143,6 +144,40 @@ public class CarsDaoDbImplTest {
         car1.setSalesPrice(18000);
         
         car1 = carDao.addCar(car1);
+        
+        
+        Cars car2 = new Cars();
+        car2.setBodyStyle("low");
+        car2.setCarDescription("Beautiful");
+        car2.setCarName("Civic");
+        car2.setCarType("Sport");
+        car2.setColor("Sunset");
+        car2.setInteriorColor("Leather");
+        car2.setMake("Honda");
+        car2.setMakeYear(2021);
+        car2.setMileage(0);
+        car2.setModel("Honda Civic");
+        car2.setMsrp(20000);
+        car2.setNewCar(true);
+        car2.setPictureURL("www.thisisanurl.co.uk");
+        car2.setTrans("Automatic");
+        car2.setVinNumber("#A21FDS6U9ER4Y46G");
+
+        car2.setSalesPrice(18000);
+        
+        car2 = carDao.addCar(car2);
+        
+        
+        List<Cars> cars = carDao.getAllCars();
+        
+        assertTrue(cars.contains(car1));
+        assertTrue(cars.contains(car2));        
+        
+        List<Cars> newcars = carDao.getAllNewCars();
+
+        assertTrue(newcars.contains(car1));
+        assertTrue(newcars.contains(car2));        
+
         
     }
 
