@@ -34,18 +34,18 @@
 <div id="featured" th:if="${isLoaded}">
     <h2 id="featuredHeadline"> Featured Vehicles: </h2>
     <div class="parentBox">
-        <div class="childBox"><img th:src="${cars[0].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[0].salesPrice}"></h3></div>
-        <div class="childBox"><img th:src="${cars[1].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[1].salesPrice}"></h3></div>
-        <div class="childBox"><img th:src="${cars[2].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[2].salesPrice}"></h3></div>
-        <div class="childBox"><img th:src="${cars[3].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[3].salesPrice}"></h3></div>
-        <div class="childBox"><img th:src="${cars[4].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[4].salesPrice}"></h3></div>
-        <div class="childBox"><img th:src="${cars[5].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[5].salesPrice}"></h3></div>
-        <div class="childBox"><img th:src="${cars[6].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[6].salesPrice}"></h3></div>
-        <div class="childBox"><img th:src="${cars[7].pictureURL}"><br><h3>fat car</h3><br><h3 th:text="${cars[7].salesPrice}"></h3></div>
+        <div class="childBox"><img th:src="${cars[0].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[0].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[1].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[1].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[2].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[2].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[3].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[3].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[4].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[4].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[5].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[5].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[6].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[6].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[7].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[7].salesPrice}"></span></div>
     </div>
 </div>
 
-<div id="nofeatured" th:else>
+<div id="nofeatured" th:unless="${isLoaded}">
     <p>No special sales yet</p>
     <p>Try browsing us a later time</p>
 </div>

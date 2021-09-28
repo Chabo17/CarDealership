@@ -23,7 +23,7 @@ public class IndexController {
         List<Cars> cars = carDao.getFeaturedCars();
         boolean isLoaded = cars.size() == 8;
         model.addAttribute("isLoaded", isLoaded);
-        model.addAttribute("featuredCars", cars);
+        model.addAttribute("cars", cars);
         return "featured";
     }
 
