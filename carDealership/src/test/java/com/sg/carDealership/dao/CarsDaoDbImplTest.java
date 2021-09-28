@@ -13,6 +13,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -246,7 +247,38 @@ public class CarsDaoDbImplTest {
      * Test of deleteCarById method, of class CarsDaoDbImpl.
      */
     @Test
-    public void testDeleteCarById() {
+    public void testDeleteCarById() 
+    {
+        Cars car = new Cars();
+        car.setBodyStyle("low");
+        car.setCarDescription("Beautiful");
+        car.setCarName("Civic");
+        car.setCarType("Sport");
+        car.setColor("Sunset");
+        car.setInteriorColor("Leather");
+        car.setMake("Honda");
+        car.setMakeYear(2021);
+        car.setMileage(0);
+        car.setModel("Honda Civic");
+        car.setMsrp(20000);
+        car.setNewCar(true);
+        car.setPictureURL("www.thisisanurl.co.uk");
+        car.setTrans("Automatic");
+        car.setVinNumber("#A21FDS6U9ER4Y46H");
+
+        car.setSalesPrice(18000);
+        
+        car = carDao.addCar(car);
+        
+        Cars fromDao = carDao.getCarById(car.getId());
+        
+        assertTrue(car.equals(fromDao), "\n\n POL\n\nSOMETHING IS WRONG\n\ncar Object\n"+ car +"\nfromDao Object\n"+ fromDao+"\n\n POL\n=========================");
+        
+        carDao.deleteCarById(car.getId());
+        
+        fromDao = carDao.getCarById(car.getId());
+        
+        assertNull(fromDao);
     }
     
 }
