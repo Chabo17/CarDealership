@@ -12,7 +12,6 @@ import com.sg.carDealership.dao.UsersDao;
 import com.sg.carDealership.dto.Cars;
 import com.sg.carDealership.dto.Specials;
 import com.sg.carDealership.dto.Users;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -79,6 +79,30 @@ public class AdminController {
         
         
     }
+    /*
+    public String performEditCar(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cars newcar = carsDao.getCarById(id);
+        
+        String makeChoice = request.getParameter("make");
+    */
+    
+    @PostMapping("editSpecial")
+    public String editSpecialRequest(HttpServletRequest request)
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Specials toEdit = specialsDao.getSpecialById(id);
+        
+        String message = request.getParameter("message");
+        
+        toEdit.setMessage(message);
+        
+        specialsDao.updateSpecial(toEdit);
+        
+        
+        return "redirect:addSpecial";
+    }
     
     /*
      public String editCar(HttpServletRequest request, Model model) {
@@ -104,13 +128,13 @@ public class AdminController {
     }
     
     @GetMapping("deleteSpecial")
-    public String deleteSpecial(HttpServletRequest request, Model model)
+    public String deleteSpecial(Integer id)
     {
-        int id = Integer.parseInt(request.getParameter("id"));
+        
         specialsDao.deleteSpecialById(id);
         
         
-        return "redirect:/admin";
+        return "redirect:addSpecial";
         
         
     }
