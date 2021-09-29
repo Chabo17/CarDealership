@@ -116,8 +116,6 @@ public class AdminController {
         newcar.setSalesPrice(Double.parseDouble(salesPrice));
         newcar.setCarDescription(description);
         newcar.setNewCar(newcar.getMakeYear() == 2021);
-
-        
         newcar.setCarName(carName);
         newcar.setPictureURL(pictureURL);
         
@@ -208,6 +206,109 @@ public class AdminController {
     }
 
     
+    
+    @GetMapping("editCar")
+    public String editCar(HttpServletRequest request, Model model) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cars car = carsDao.getCarById(id);
+        
+        String[] makeList = {"Audi", "Honda", "China"};//dao get list of items
+        model.addAttribute("makeList", makeList);
+        
+        String[] modelList = {"A4", "S", "S3"};
+        model.addAttribute("modelList", modelList);
+        
+        String[] typeList = {"New", "Used", "Broken"};
+        model.addAttribute("typeList", typeList);
+        
+        String[] bodyList = {"Car", "SUV", "COUPE"};
+        model.addAttribute("bodyList", bodyList);
+        
+        String[] transList = {"Automatic", "Manual"};
+        model.addAttribute("transList", transList);
+        
+        String[] colorList = {"Black", "Red", "White"};
+        model.addAttribute("colorList", colorList);
+        
+        String[] interList = {"Gold", "Black", "Silver"};
+        model.addAttribute("interList", interList);
+        
+        
+        
+        model.addAttribute("selectedCar", car);
+        return "editCars";
+    }
+    
+    @PostMapping("editCar")
+    public String performEditCar(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cars newcar = carsDao.getCarById(id);
+        
+        String makeChoice = request.getParameter("make");
+        String modelChoice = request.getParameter("model");
+        String typeChoice = request.getParameter("carType");
+        String colorChoice = request.getParameter("color");
+        String interiorChoice = request.getParameter("interiorColor");
+        String transChoice = request.getParameter("trans");
+        String bodyChoice = request.getParameter("bodyStyle");
+        
+        String year = request.getParameter("year");
+        String mileage = request.getParameter("mileage");
+        String vinNumber = request.getParameter("vinNumber");
+        String msrp = request.getParameter("msrp");
+        String salesPrice = request.getParameter("salesPrice");
+        String description = request.getParameter("description");
+        String carName = request.getParameter("carName");
+        String pictureURL = request.getParameter("pictureURL");
+        
+        
+ 
+        newcar.setMake(makeChoice);
+        newcar.setModel(modelChoice);
+        newcar.setCarType(typeChoice);
+        newcar.setBodyStyle(bodyChoice);
+        newcar.setMakeYear(Integer.parseInt(year));
+        newcar.setTrans(transChoice);
+        newcar.setColor(colorChoice);
+        newcar.setInteriorColor(interiorChoice);
+        newcar.setMileage(Integer.parseInt(mileage));
+        newcar.setVinNumber(vinNumber);
+        newcar.setMsrp(Double.parseDouble(msrp));
+        newcar.setSalesPrice(Double.parseDouble(salesPrice));
+        newcar.setCarDescription(description);
+        newcar.setNewCar(newcar.getMakeYear() == 2021);
+        newcar.setCarName(carName);
+        newcar.setPictureURL(pictureURL);
+        
+        carsDao.updateCar(newcar);
+        
+        return "redirect:/admin/cars";
+    }
+     
+    
+//    @GetMapping("editUser")
+//    public String editCar(HttpServletRequest request, Model model) {
+//        int id = Integer.parseInt(request.getParameter("id"));
+//        Teacher teacher = teacherDao.getTeacherById(id);
+//        
+//        model.addAttribute("teacher", teacher);
+//        return "editTeacher";
+//    }
+//    
+//    @PostMapping("editUser")
+//    public String performEditTeacher(HttpServletRequest request) {
+//        int id = Integer.parseInt(request.getParameter("id"));
+//        Teacher teacher = teacherDao.getTeacherById(id);
+//        
+//        teacher.setFirstName(request.getParameter("firstName"));
+//        teacher.setLastName(request.getParameter("lastName"));
+//        teacher.setSpecialty(request.getParameter("specialty"));
+//        
+//        teacherDao.updateTeacher(teacher);
+//        
+//        return "redirect:/teachers";
+//    }
+//     
     
     
 }
