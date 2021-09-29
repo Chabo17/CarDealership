@@ -41,7 +41,7 @@ public class SalesController {
     public String SalesPurchase(HttpServletRequest request,Model model){
         int id = Integer.parseInt(request.getParameter("id"));
         Cars car = carsDao.getCarById(id);
-        model.addAttribute("Car", car);
+        model.addAttribute("car", car);
         
         return "purchase";
     }
