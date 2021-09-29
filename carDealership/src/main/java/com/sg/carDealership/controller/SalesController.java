@@ -33,8 +33,8 @@ public class SalesController {
     @GetMapping("index")
     public String ShowAllModels(Model model){
         List<Cars> allSearch = carsDao.getAllCars();
-        model.addAttribute("All cars", allSearch);
-        return "index";
+        model.addAttribute("cars", allSearch);
+        return "salesDisplay";
     }
     
     @GetMapping("purchase")
