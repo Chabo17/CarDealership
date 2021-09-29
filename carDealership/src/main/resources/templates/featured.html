@@ -31,18 +31,23 @@
     <a id="checkItOutButton" class="btn btn-primary btn-lg" href="#" role="button">Check it out!</a>
 </div>
 
-<div id="featured">
+<div id="featured" th:if="${isLoaded}">
     <h2 id="featuredHeadline"> Featured Vehicles: </h2>
-    <div th:each="car : ${featuredCars}" class="parentBox">
-        <div class="childBox"><img src="navbarCar.jpg" th:src="navbarCar.jpg"><br><h3>fat car</h3><br><h3 th:text="${car.salesPrice}"></h3></div>
-        <div class="childBox"></div>
-        <div class="childBox"></div>
-        <div class="childBox"></div>
-        <div class="childBox"></div>
-        <div class="childBox"></div>
-        <div class="childBox"></div>
-        <div class="childBox"></div>
+    <div class="parentBox">
+        <div class="childBox"><img th:src="${cars[0].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[0].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[1].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[1].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[2].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[2].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[3].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[3].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[4].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[4].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[5].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[5].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[6].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[6].salesPrice}"></span></div>
+        <div class="childBox"><img th:src="${cars[7].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[7].salesPrice}"></span></div>
     </div>
+</div>
+
+<div id="nofeatured" th:unless="${isLoaded}">
+    <p>No special sales yet</p>
+    <p>Try browsing us a later time</p>
 </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

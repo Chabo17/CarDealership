@@ -2,9 +2,7 @@
 .xml
 /carDealership/target/
 /carDealership/nbproject/
-<<<<<<< HEAD
+
 *.properties
-=======
-carDealership/src/main/resources/application.properties
-carDealership/src/test/resources/application.properties
->>>>>>> 5c714a2f8112bf759e6f6a7f2786e7f733bffa37
+
+*.properties
