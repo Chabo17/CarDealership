@@ -97,7 +97,7 @@
                                 
                                 <select id="minprice" name="minprice" class="form-control" >
                                     <option th:each="minprice : ${minprices}"
-                                            th:text="${minprice}">
+                                            th:text="${'$'+minprice}">
                                         Min Price</option>
                                 </select>
                             </div>
@@ -105,8 +105,8 @@
                             <div class="col-2">
                                 <select id="maxprice" name="maxprice" class="form-control" >
                                     <option 
-                                        th:each="maxprice : ${maxprices}"
-                                        th:text="${maxprice}">
+                                        th:each="minprice : ${maxprices}"
+                                        th:text="${'$'+minprice}">
                                         Max Price</option>
                                 </select>
                             </div>
@@ -117,16 +117,16 @@
                                 Year</label>
                             <div class="col-2">
                                 <select id="minyear" name="minyear" class="form-control" >
-                                    <option th:each="minyear : ${minyears}"
-                                        th:text="${minyear}">
+                                    <option th:each="minprice : ${minyears}"
+                                        th:text="${minprice}">
                                         Min Year</option>
                                 </select>
                             </div>
                             
                             <div class="col-2">
                                 <select id="maxyear" name="maxyear" class="form-control" >
-                                    <option th:each="maxyear : ${maxyears}"
-                                            th:text="${maxyear}">
+                                    <option th:each="minprice : ${maxyears}"
+                                            th:text="${minprice}">
                                         Max Year</option>
                                 </select>
                             </div>

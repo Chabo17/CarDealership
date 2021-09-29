@@ -9,6 +9,7 @@ import com.sg.carDealership.dao.*;
 import com.sg.carDealership.dto.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,6 +73,59 @@ public class AdminController {
         
         
         return "cars";
+        
+    }
+    
+     @GetMapping("cars/search")
+    public String showCars(HttpServletRequest request, Model model) {
+        List<Cars> cars = carsDao.getAllCars();
+        List<Cars> temp1;
+        
+        try{
+            double minprice = Double.parseDouble(request.getParameter("minprice"));
+            
+            double maxprice = Double.parseDouble(request.getParameter("maxprice"));
+            
+            temp1 = cars.stream().filter(car -> car.getSalesPrice() >= minprice && car.getSalesPrice() <= maxprice).collect(Collectors.toList());
+
+        }catch(Exception e)
+        {
+            temp1 = cars;
+        }
+        
+        List<Cars> temp2;
+        
+        try{
+        int minyear = Integer.parseInt(request.getParameter("minyear"));
+        int maxyear = Integer.parseInt(request.getParameter("minyear"));
+            temp2 = temp1.stream().filter(car -> car.getMakeYear() >= minyear && car.getMakeYear()<=maxyear).collect(Collectors.toList());
+        }catch(Exception e)
+        {
+            temp2 = temp1;
+        }
+        
+        
+        model.addAttribute("carsfiltered", temp2);
+        
+        int[] price = new int[20];
+        for(int i=0; i < price.length; i++){
+            price[i] = (i*5000);
+        }
+        model.addAttribute("minprices", price);
+        model.addAttribute("maxprices", price);
+        
+        int[] year = new int[20];
+        int counter = 0;
+        for(int i=2021; i > 2021-year.length; i--){
+            year[counter] = i;
+            counter++;
+        }
+        
+        model.addAttribute("minyears", year);
+        model.addAttribute("maxyears", year);
+        
+        
+        return "carsSearch";
         
     }
     

@@ -38,7 +38,7 @@ public class SalesController {
     }
     
     @GetMapping("purchase")
-    public String SalesPurchase(HttpServletRequest request,Model model){
+    public String SalesPurchase(HttpServletRequest request, Model model){
         int id = Integer.parseInt(request.getParameter("id"));
         Cars car = carsDao.getCarById(id);
         model.addAttribute("car", car);
