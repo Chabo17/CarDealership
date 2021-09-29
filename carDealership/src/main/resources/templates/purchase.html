@@ -25,14 +25,75 @@
             <li><a class="nav-link" href="/">Home</a></li>
             <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
             <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
-            <li><a class="nav-link" href="#">Specials</a></li>
-            <li><a class="nav-link" href="#">Contact</a></li>
-            <li><a class="nav-link" href="#">Sales</a></li>
+            <li><a class="nav-link" href="/home/specials">Specials</a></li>
+            <li><a class="nav-link" href="/home/contact">Contact</a></li>
+            <li><a class="nav-link" href="/sales/index">Sales</a></li>
             <li><a class="nav-link" href="/admin">Admin</a></li>
 
         </ul>
     </nav>
     <!----NavBar End----->
+    
+    <div>
+        
+        <div class="row">
+                                        <div class="col-md-12 text-left">
+                                            <div class="well"><div class="col-md-4"><label th:text="${car.makeYear}"/><label> / </label><label th:text="${car.make}"/><label> / </label><label th:text="${car.model}"/></div></div>
+                                        </div>
+                                    </div>     
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="well"><img th:src=${car.pictureURL} class="rounded float-left" alt="...">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well">Body Style<label th:text="${car.bodyStyle}"/></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well">Interior<label th:text="${car.interiorColor}"/></div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="well">Sale Price<label th:text="${car.salesPrice}"/></div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well">Trans<label th:text="${car.trans}"/></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well">Mileage<label th:text="${car.mileage}"/></div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="well">MSRP<label th:text="${car.msrp}"/></div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well">Color<label th:text="${car.color}"/></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well">Vin#<label th:text="${car.vinNumber}"/>
+                                                            </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="well"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+        
+    </div>
     
     
     <div class = "row m-4 form-group">
