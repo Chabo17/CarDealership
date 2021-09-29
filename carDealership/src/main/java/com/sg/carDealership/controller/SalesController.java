@@ -5,7 +5,10 @@
  */
 package com.sg.carDealership.controller;
 
+import com.sg.carDealership.dao.Sales_Information_Record_DaoDbImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -14,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/sales")
-public class SalesController 
-{
-    
-    
-    
-    
+public class SalesController {
+
+    @Autowired
+    Sales_Information_Record_DaoDbImpl Sales;
+
+    @GetMapping("/Index")
+    public String ShowAllModels(){
+        
+        return "/Index";
+    }
     
 }
