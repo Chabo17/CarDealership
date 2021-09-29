@@ -6,6 +6,7 @@
 package com.sg.carDealership.dao;
 
 import com.sg.carDealership.dto.Cars;
+import com.sg.carDealership.dto.Sales_Information_Record;
 import com.sg.carDealership.dto.Specials;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -30,6 +31,10 @@ public class SpecialsDaoDbImplTest {
     @Autowired
     CarsDao carDao;
     
+        @Autowired
+    Sales_Information_Record_Dao sirDao;
+    
+    
     
     public SpecialsDaoDbImplTest() {
     }
@@ -44,6 +49,12 @@ public class SpecialsDaoDbImplTest {
     
     @BeforeEach
     public void setUp() {
+        
+        List<Sales_Information_Record> sirs = sirDao.getALLSIR();
+        for(Sales_Information_Record sir : sirs)
+        {
+            sirDao.deleteSIRById(sir.getId());
+        }
         
         List<Specials> sList = SDao.getAllSpecials();
         for(Specials S : sList)
@@ -63,6 +74,9 @@ public class SpecialsDaoDbImplTest {
         {
             carDao.deleteCarById(car.getId());
         }  
+        
+
+        
     }
     
     @AfterEach

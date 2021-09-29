@@ -3,3 +3,6 @@
 /carDealership/target/
 /carDealership/nbproject/
 *.properties
+*.properties
+carDealership/src/main/resources/application.properties
+*.properties

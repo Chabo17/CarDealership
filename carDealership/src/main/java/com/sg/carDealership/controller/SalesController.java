@@ -5,10 +5,20 @@
  */
 package com.sg.carDealership.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  *
  * @author xwang2945
  */
-public class SalesController {
+@Controller
+@RequestMapping("/sales")
+public class SalesController 
+{
+    
+    
+    
+    
     
 }
