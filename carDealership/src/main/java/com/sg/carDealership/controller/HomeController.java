@@ -51,7 +51,7 @@ public class HomeController
     }
     
     
-    @GetMapping("/inquire")
+    @GetMapping("/contact")
     public String displayInquires(Model model) {
    
         return "inquire";
@@ -60,18 +60,18 @@ public class HomeController
     
     
     @PostMapping("/addInquire")
-    public String addSpecial(String name, String email, String phone, String message)
+    public String addSpecial(String inquireName, String email, String phone, String message)
     {
         Inquire inquire = new Inquire();
         
-        inquire.setInquireName(name);
+        inquire.setInquireName(inquireName);
         inquire.setEmail(email);
         inquire.setPhone(phone);
         inquire.setMessage(message);
         
         inquireDao.addInquire(inquire);
 
-        return "index";
+        return "redirect:/featured";
     }
     
     
