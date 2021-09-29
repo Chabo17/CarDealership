@@ -27,4 +27,7 @@ public interface SpecialsDao
     void deleteSpecialById(int id);
     
     
+    
+    
+    
 }
