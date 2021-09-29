@@ -95,7 +95,8 @@ public class Sales_Information_Record_DaoDbImpl implements Sales_Information_Rec
         final String UPDATE_SIR = "UPDATE sales_information_record SET s_i_names = ?, s_i_phone = ?,"
                                 + "s_i_street_1 = ?, s_i_street_2 = ?, s_i_city = ?, s_i_state = ?, s_i_zipcode = ?,"
                                 + " s_r_purchase_price = ?, s_r_purchase_type = ?, user_id = ?, car_id = ?"
-                + "WHERE id = ?";
+                                +"Where id = ?";
+                
         jdbc.update(UPDATE_SIR,
                 sir.getS_i_names(),
                 sir.getS_i_phone(),
