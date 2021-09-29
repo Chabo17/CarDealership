@@ -27,11 +27,8 @@ public class SpecialsDaoDbImplTest {
     
     @Autowired
     SpecialsDao SDao;
-    
+
     @Autowired
-    CarsDao carDao;
-    
-        @Autowired
     Sales_Information_Record_Dao sirDao;
     
     
@@ -60,21 +57,7 @@ public class SpecialsDaoDbImplTest {
         for(Specials S : sList)
         {
             SDao.deleteSpecialById(S.getId());
-        }
-        
-        
-        List<Cars> newcars = carDao.getAllNewCars();
-        for(Cars car : newcars)
-        {
-            carDao.deleteCarById(car.getId());
-        }
-
-        List<Cars> usedcars = carDao.getAllUsedCars();
-        for(Cars car : usedcars)
-        {
-            carDao.deleteCarById(car.getId());
-        }  
-        
+        }    
 
         
     }
@@ -85,30 +68,9 @@ public class SpecialsDaoDbImplTest {
 
     @Test
     public void testGetSpecialById() {
-        Cars car = new Cars();
-        car.setBodyStyle("low");
-        car.setCarDescription("Beautiful");
-        car.setCarName("Civic");
-        car.setCarType("Sport");
-        car.setColor("Sunset");
-        car.setInteriorColor("Leather");
-        car.setMake("Honda");
-        car.setMakeYear(2021);
-        car.setMileage(0);
-        car.setModel("Honda Civic");
-        car.setMsrp(20000);
-        car.setNewCar(true);
-        car.setPictureURL("www.thisisanurl.co.uk");
-        car.setTrans("Automatic");
-        car.setVinNumber("#A21FDS6U9ER4Y46H");
-
-        car.setSalesPrice(18000);
-        
-        car = carDao.addCar(car);
-        
+       
         Specials S = new Specials();
         S.setMessage("This is the message");
-        S.setCarId(car.getId());
         
         SDao.addSpecial(S);
         assertEquals(S,SDao.getSpecialById(S.getId()));
@@ -133,10 +95,10 @@ public class SpecialsDaoDbImplTest {
     public void testUpdateSpecial() {
         Specials S = new Specials();
         S.setMessage("This is the message");
-        S.setMessage("This is the better message");
-        S.setCarId(0);
-        
         SDao.addSpecial(S);
+        S.setMessage("This is the better message");
+        SDao.updateSpecial(S);
+
         assertEquals(S,SDao.getSpecialById(S.getId()));
     }
     

@@ -44,10 +44,7 @@ CREATE TABLE inquire(
 
 CREATE TABLE specials(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	carId INT NOT NULL,
-    message VARCHAR(500) NOT NULL,
-    FOREIGN KEY (carId) REFERENCES cars(id)
-    
+    message VARCHAR(500) NOT NULL
 );
 
 
@@ -69,3 +66,15 @@ CREATE TABLE sales_information_record(
 	FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (car_id) REFERENCES cars(id)
 );
+
+
+CREATE TABLE model(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	model VARCHAR(30)
+);
+
+
+CREATE TABLE make(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	make VARCHAR(30)
+    );

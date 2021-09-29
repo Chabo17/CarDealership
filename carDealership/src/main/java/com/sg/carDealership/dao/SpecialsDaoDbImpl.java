@@ -50,10 +50,9 @@ public class SpecialsDaoDbImpl implements SpecialsDao
     @Transactional
     public Specials addSpecial(Specials special) 
     {
-        final String INSERT_SPECIAL = "INSERT INTO specials(carId, message) "
-                + "VALUES(?,?)";
+        final String INSERT_SPECIAL = "INSERT INTO specials(message) "
+                + "VALUES(?)";
         jdbc.update(INSERT_SPECIAL,
-                special.getCarId(),
                 special.getMessage());
         int newId = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
         special.setId(newId);
@@ -63,8 +62,8 @@ public class SpecialsDaoDbImpl implements SpecialsDao
     @Override
     public void updateSpecial(Specials special) 
     {
-        final String UPDATE_SPECIAL = "UPDATE specials SET carId = ?, message = ? WHERE id = ?";
-        jdbc.update(UPDATE_SPECIAL, special.getCarId(), 
+        final String UPDATE_SPECIAL = "UPDATE specials SET message = ? WHERE id = ?";
+        jdbc.update(UPDATE_SPECIAL, 
                 special.getMessage(),
                 special.getId()
                 
@@ -95,7 +94,6 @@ public class SpecialsDaoDbImpl implements SpecialsDao
             Specials special = new Specials();
             
             special.setId(rs.getInt("id"));
-            special.setCarId(rs.getInt("carId"));
             special.setMessage(rs.getString("message"));
             
             
