@@ -60,6 +60,17 @@ public class AdminController {
         model.addAttribute("minprices", price);
         model.addAttribute("maxprices", price);
         
+        int[] year = new int[20];
+        int counter = 0;
+        for(int i=2021; i > 2021-year.length; i--){
+            year[counter] = i;
+            counter++;
+        }
+        
+        model.addAttribute("minyears", year);
+        model.addAttribute("maxyears", year);
+        
+        
         return "cars";
         
     }
