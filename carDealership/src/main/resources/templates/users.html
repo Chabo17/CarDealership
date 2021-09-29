@@ -70,7 +70,7 @@
                                 <td th:text="${user.userRole}">Role</td>
                                 <td th:text="${user.userPassword}">Password</td>
                                 
-                                <td>Edit</td>
+                                <td><a href="#" th:href="@{/admin/editUser(id=${user.getId()})}">Edit</a></td>
                                 <td><a href="#" th:href="@{/admin/deleteUser(id=${user.getId()})}">Delete</a></td>
                             </tr>
                         </tbody>
