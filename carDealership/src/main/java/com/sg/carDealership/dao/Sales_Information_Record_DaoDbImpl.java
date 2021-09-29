@@ -87,14 +87,35 @@ public class Sales_Information_Record_DaoDbImpl implements Sales_Information_Rec
     private String s_r_purchase_type;
     private int user_id;
     private int car_id;
+    
+    
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    s_i_names VARCHAR(50),
+    s_i_phone VARCHAR(20),
+    s_i_street_1 VARCHAR(50),
+    s_i_street_2 VARCHAR(50),
+    s_i_city VARCHAR(20),
+    s_i_state VARCHAR(2),
+    s_i_zipcode  VARCHAR(10),
+    s_r_purchase_price DOUBLE,
+    s_r_purchase_type VARCHAR(30),
+    user_id INT,
+    car_id INT,
+    
+    
+    
+    
+    
     */
 
     @Override
     public void updateSIR(Sales_Information_Record sir) 
     {
-        final String UPDATE_SIR = "UPDATE sales_information_record SET s_i_names = ?, s_i_phone = ?,"
+        final String UPDATE_SIR = "UPDATE sales_information_record SET "
+                + "s_i_names = ?, "
+                + "s_i_phone = ?,"
                                 + "s_i_street_1 = ?, s_i_street_2 = ?, s_i_city = ?, s_i_state = ?, s_i_zipcode = ?,"
-                                + " s_r_purchase_price = ?, s_r_purchase_type = ?, user_id = ?, car_id = ?"
+                                + " s_r_purchase_price = ?, s_r_purchase_type = ?, user_id = ?, car_id = ? "
                                 +"Where id = ?";
                 
         jdbc.update(UPDATE_SIR,
