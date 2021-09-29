@@ -5,9 +5,14 @@
  */
 package com.sg.carDealership.controller;
 
+import com.sg.carDealership.dao.CarsDao;
 import com.sg.carDealership.dao.Sales_Information_Record_DaoDbImpl;
+import com.sg.carDealership.dto.Cars;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,14 +23,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/sales")
 public class SalesController {
+    
+    @Autowired
+    CarsDao carsDao;
 
     @Autowired
     Sales_Information_Record_DaoDbImpl Sales;
 
-    @GetMapping("/Index")
-    public String ShowAllModels(){
+    @GetMapping("index")
+    public String ShowAllModels(Model model){
+        List<Cars> allSearch = carsDao.getAllCars();
+        model.addAttribute("All cars", allSearch);
+        return "index";
+    }
+    
+    @GetMapping("purchase")
+    public String SalesPurchase(HttpServletRequest request,Model model){
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cars car = carsDao.getCarById(id);
+        model.addAttribute("Car", car);
         
-        return "/Index";
+        return "purchase";
     }
     
 }
