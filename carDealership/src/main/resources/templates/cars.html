@@ -61,12 +61,91 @@
             </div>
 
 <div class="row m-4">
+                
+
     
  
  
     <div class="col-md-12">
+        <div class="border border-dark">
+            <form action="searchbox" method="POST">
+                <div class="row col-md-12 m-3">
+                    
+                    
+                            <label for="searchName" class="col-form-label col-md-1">
+                                Quick Search</label>
+                            <div class="col-md-2">
+                                <input type="text" name="searchName" 
+                                       id="searchName" class="form-control"/>
+                            </div>
+                    
+                           
+                            <label for="minprice" class="col-form-label">
+                                Price</label>
+                            <div class="col-2">
+                                
+
+                                
+                                <select id="minprice" name="minprice" class="form-control" >
+                                    <option th:each="minprice : ${minprices}"
+                                            th:text="${'$'+minprice}">
+                                        Min Price</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-2">
+                                <select id="maxprice" name="maxprice" class="form-control" >
+                                    <option 
+                                        th:each="minprice : ${maxprices}"
+                                        th:text="${'$'+minprice}">
+                                        Max Price</option>
+                                </select>
+                            </div>
+                    
+                    
+                                     
+                            <label for="minyear" class="col-form-label">
+                                Year</label>
+                            <div class="col-2">
+                                <select id="minyear" name="minyear" class="form-control" >
+                                    <option th:each="minprice : ${minyears}"
+                                        th:text="${minprice}">
+                                        Min Year</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-2">
+                                <select id="maxyear" name="maxyear" class="form-control" >
+                                    <option th:each="minprice : ${maxyears}"
+                                            th:text="${minprice}">
+                                        Max Year</option>
+                                </select>
+                            </div>
+                            
+                            
+                    
+                            
+                    
+                    
+                    
+
+                </div>
+                
+                <div class="row col-md-2">
+                    
+                    <div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                    
+                </div>
+            </form>
+            
+            </div>
         
-        <div class="row border border-dark">
+            
+        
+        
+        <div class="row border border-dark m-5">
                 <div class="col text-center m-3">
                     <table class="table table-striped col-md-12">
                         <tbody>

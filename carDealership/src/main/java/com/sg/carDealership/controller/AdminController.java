@@ -51,6 +51,14 @@ public class AdminController {
     public String showCars(Model model) {
         List<Cars> cars = carsDao.getAllCars();
         model.addAttribute("carsfiltered", cars);
+        
+        int[] price = new int[20];
+        for(int i=0; i < price.length; i++){
+            price[i] = (i*5000);
+        }
+        model.addAttribute("minprices", price);
+        model.addAttribute("maxprices", price);
+        
         return "cars";
         
     }
