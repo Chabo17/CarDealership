@@ -69,3 +69,15 @@ CREATE TABLE sales_information_record(
 	FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (car_id) REFERENCES cars(id)
 );
+
+
+CREATE TABLE model(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	model VARCHAR(30)
+);
+
+
+CREATE TABLE make(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	make VARCHAR(30)
+    );
