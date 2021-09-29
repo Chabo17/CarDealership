@@ -1,95 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Show Users</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Additional CSS files here -->
     <link rel="stylesheet" href="./../styles/home.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>Car Dealership</title>
 
 </head>
 <body>
 <!----NavBar Start----->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-    <img src="/navbarCar.jpg" alt="McQueen">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <img src="navbarCar.jpg" alt="McQueen">
     <ul class="navbar-nav mr-auto">
         <li><a class="nav-link" href="/">Home</a></li>
         <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
         <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
         <li><a class="nav-link" href="/home/specials">Specials</a></li>
         <li><a class="nav-link" href="/home/contact">Contact</a></li>
-        <li><a class="nav-link" href="#">Sales</a></li>
+        <li><a class="nav-link" href="/sales/index">Sales</a></li>
         <li><a class="nav-link" href="/admin">Admin</a></li>
 
     </ul>
 </nav>
 <!----NavBar End----->
 
+<!-----Cars Manager Start---->
 <div class="container">
-            <div class="row m-4">
-                <div class="col text-center border border-dark">
-                    <h1><a href="/" class="text-dark">Cars Manager</a></h1>
-                </div>
-            </div>
-            <div class="row m-4 border border-dark">
-                <div class="col text-center m-3">
-                    <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
-                </div>
-                
-                <div class="col text-center m-3">
-                    <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
-                </div>
-                
-                <div class="col text-center m-3">
-                    <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
-                </div>
-                
-                <div class="col text-center m-3">
-                    <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
-                </div>
-            </div>
-            <div class="row m-4 border border-dark">
-                <div class="col text-center m-3">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Password</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="user : ${users}">
-                                <td th:text="${user.id}">User ID</td>
-                                <td th:text="${user.firstName + ' ' + user.lastName}">Name</td>
-                                <td th:text="${user.email}">Email</td>
-                                <td th:text="${user.userRole}">Role</td>
-                                <td th:text="${user.userPassword}">Password</td>
-                                
-                                <td><a href="#" th:href="@{/admin/editUser(id=${user.getId()})}">Edit</a></td>
-                                <td><a href="#" th:href="@{/admin/deleteUser(id=${user.getId()})}">Delete</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-    
-
-    
-    
+    <div class="row m-4">
+        <div class="col text-center border border-dark">
+            <h1><a href="/" class="text-dark">Cars Manager</a></h1>
         </div>
-    
-    
-    
+    </div>
+    <div class="row m-4 border border-dark">
+        <div class="col text-center m-3">
+            <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
+        </div>
 
-    
+        <div class="col text-center m-3">
+            <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
+        </div>
 
+        <div class="col text-center m-3">
+            <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
+        </div>
 
+        <div class="col text-center m-3">
+            <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/admin/addSpecial" class="btn btn-outline-primary btn-lg">Manage Specials</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/admin/addMake" class="btn btn-outline-primary btn-lg">Add Make</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/admin/addModel" class="btn btn-outline-primary btn-lg">Add Model</a>
+        </div>
+    </div>
+<!-----Cars Manager End---->
 
+<div class="row m-4 border border-dark">
+    <div class="col text-center m-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">User ID</td>
+                <td th:text="${user.firstName + ' ' + user.lastName}">Name</td>
+                <td th:text="${user.email}">Email</td>
+                <td th:text="${user.userRole}">Role</td>
+                <td th:text="${user.userPassword}">Password</td>
+
+                <td><a href="#" th:href="@{/admin/editUser(id=${user.getId()})}">Edit</a></td>
+                <td><a href="#" th:href="@{/admin/deleteUser(id=${user.getId()})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+
+</div>
 
 
 </body>

@@ -5,4 +5,5 @@
 *.properties
 *.properties
 carDealership/src/main/resources/application.properties
+carDealership/src/test/resources/application.properties
 *.properties

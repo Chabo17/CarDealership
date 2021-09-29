@@ -5,13 +5,9 @@
  */
 package com.sg.carDealership.controller;
 
-import com.sg.carDealership.dao.CarsDao;
-import com.sg.carDealership.dao.InquireDao;
-import com.sg.carDealership.dao.SpecialsDao;
-import com.sg.carDealership.dao.UsersDao;
-import com.sg.carDealership.dto.Cars;
-import com.sg.carDealership.dto.Specials;
-import com.sg.carDealership.dto.Users;
+import com.sg.carDealership.dao.*;
+import com.sg.carDealership.dto.*;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -41,7 +36,13 @@ public class AdminController {
    
    @Autowired
    UsersDao usersDao;
-   
+
+    @Autowired
+    MakeDao makeDao;
+
+    @Autowired
+    ModelDao myModelDao;
+
    @GetMapping
     public String showAdminPage(Model model) {
         return "admin";
@@ -387,7 +388,32 @@ public class AdminController {
         
         return "redirect:/admin/users";
     }
-     
+
+    @GetMapping("addMake")
+    public String addMake() {
+        return "addMake";
+    }
+
+    @GetMapping("addModel")
+    public String addModel() {
+        return "addModel";
+    }
+
+    @PostMapping("addMake")
+    public String performAddMake(Make newMake, HttpServletRequest request) {
+        String insertMakeBox = request.getParameter("insertMakeBox");
+        newMake.setMake(insertMakeBox);
+        makeDao.addMake(newMake);
+        return "redirect:/admin/addMake";
+    }
+
+    @PostMapping("addModel")
+    public String performAddModel(MyModel newModel, HttpServletRequest request) {
+        String insertModelBox = request.getParameter("insertModelBox");
+        newModel.setModel(insertModelBox);
+        myModelDao.addMyModel(newModel);
+        return "redirect:/admin/addModel";
+    }
     
     
 }

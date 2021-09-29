@@ -1,141 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./../styles/home.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>Car Dealership</title>
 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Add Users</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Additional CSS files here -->
+    <link rel="stylesheet" href="./../styles/home.css">
 </head>
 <body>
 <!----NavBar Start----->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-    <img src="/navbarCar.jpg" alt="McQueen">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <img src="navbarCar.jpg" alt="McQueen">
     <ul class="navbar-nav mr-auto">
         <li><a class="nav-link" href="/">Home</a></li>
         <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
         <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
-        <li><a class="nav-link" href="#">Specials</a></li>
-        <li><a class="nav-link" href="#">Contact</a></li>
-        <li><a class="nav-link" href="#">Sales</a></li>
+        <li><a class="nav-link" href="/home/specials">Specials</a></li>
+        <li><a class="nav-link" href="/home/contact">Contact</a></li>
+        <li><a class="nav-link" href="/sales/index">Sales</a></li>
         <li><a class="nav-link" href="/admin">Admin</a></li>
 
     </ul>
 </nav>
 <!----NavBar End----->
 
+<!-----Cars Manager Start---->
 <div class="container">
-            <div class="row m-4">
-                <div class="col text-center border border-dark">
-                    <h1><a href="/" class="text-dark">Cars Manager</a></h1>
-                </div>
-            </div>
-            <div class="row m-4 border border-dark">
-                <div class="col text-center m-3">
-                    <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
-                </div>
-                
-                <div class="col text-center m-3">
-                    <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
-                </div>
-                
-                <div class="col text-center m-3">
-                    <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
-                </div>
-                
-                <div class="col text-center m-3">
-                    <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
-                </div>
-            </div>
-
-    
-            <div class="row m-4 border border-dark">
-                <div class="col-3 text-center m-3">
-                    <span class="h3">Add Users</span>
-                </div>
-                <div class="col-7 text-center m-3">
-                    <form action="addUser" method="POST">
-                        <div class="form-group row">
-                            <label for="fname" class="col-3 col-form-label">
-                                First Name</label>
-                            <div class="col-9">
-                                <input type="text" name="fname" 
-                                       id="fname" class="form-control"/>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="lname" class="col-3 col-form-label">
-                                Last Name</label>
-                            <div class="col-9">
-                                <input type="text" name="lname" 
-                                       id="lname" class="form-control"/>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="email" class="col-3 col-form-label">
-                                Email</label>
-                            <div class="col-9">
-                                <input type="email" name="email" 
-                                       id="description" class="form-control"/>
-                            </div>
-                        </div>                        
-                        
-                        <div class="form-group row">
-                            <label for="password" class="col-3 col-form-label">
-                                Password</label>
-                            <div class="col-9">
-                                <input type="text" name="password" 
-                                       id="password" class="form-control"/>
-                            </div>
-                        </div>                         
-                        
-                         <div class="form-group row">
-                            <label for="cpassword" class="col-3 col-form-label">
-                                Confirm Password</label>
-                            <div class="col-9">
-                                <input type="text" name="cpassword" 
-                                       id="cpassword" class="form-control"/>
-                            </div>
-                        </div> 
-
-                        <div class="form-group row">
-                            <label for="role" class="col-3 col-form-label">
-                                Role</label>
-                            <div class="col-9">
-                                <select id="role" name="role" class="form-control" >
-                                    <option th:each="role : ${roles}" 
-                                            th:value="${role}" 
-                                            th:text="${role}">
-                                        User</option>
-                                </select>
-                            </div>
-                        </div>                   
-                        
-                        
-
-                        
-                        
-                        
-                        
-                        <button type="submit" class="btn btn-primary">Add User</button>
-                    </form>
-                </div>
-            </div>
-    
-    
+    <div class="row m-4">
+        <div class="col text-center border border-dark">
+            <h1><a href="/" class="text-dark">Cars Manager</a></h1>
         </div>
-    
-    
-    
+    </div>
+    <div class="row m-4 border border-dark" style="flex-wrap: nowrap;">
+        <div class="col text-center m-3">
+            <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
+        </div>
 
-    
+        <div class="col text-center m-3">
+            <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
+        </div>
+
+        <div class="col text-center m-3">
+            <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
+        </div>
+
+        <div class="col text-center m-3">
+            <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/admin/addSpecial" class="btn btn-outline-primary btn-lg">Manage Specials</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/admin/addMake" class="btn btn-outline-primary btn-lg">Add Make</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/admin/addModel" class="btn btn-outline-primary btn-lg">Add Model</a>
+        </div>
+    </div>
+    <!-----Cars Manager End---->
 
 
+    <div class="row m-4 border border-dark">
+        <div class="col-3 text-center m-3">
+            <span class="h3">Add Users</span>
+        </div>
+        <div class="col-7 text-center m-3">
+            <form action="addUser" method="POST">
+                <div class="form-group row">
+                    <label for="fname" class="col-3 col-form-label">
+                        First Name</label>
+                    <div class="col-9">
+                        <input type="text" name="fname"
+                               id="fname" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="lname" class="col-3 col-form-label">
+                        Last Name</label>
+                    <div class="col-9">
+                        <input type="text" name="lname"
+                               id="lname" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="email" class="col-3 col-form-label">
+                        Email</label>
+                    <div class="col-9">
+                        <input type="email" name="email"
+                               id="description" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="password" class="col-3 col-form-label">
+                        Password</label>
+                    <div class="col-9">
+                        <input type="text" name="password"
+                               id="password" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="cpassword" class="col-3 col-form-label">
+                        Confirm Password</label>
+                    <div class="col-9">
+                        <input type="text" name="cpassword"
+                               id="cpassword" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="role" class="col-3 col-form-label">
+                        Role</label>
+                    <div class="col-9">
+                        <select id="role" name="role" class="form-control">
+                            <option th:each="role : ${roles}"
+                                    th:value="${role}"
+                                    th:text="${role}">
+                                User
+                            </option>
+                        </select>
+                    </div>
+                </div>
 
 
-
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
