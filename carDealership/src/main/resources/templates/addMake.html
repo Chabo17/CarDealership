@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!-- Additional CSS files here -->
-    <link rel="stylesheet" href="./../styles/home.css">
-    <title>Add Make</title>
+  <!-- Additional CSS files here -->
+  <link rel="stylesheet" href="./../styles/home.css">
+  <title>Add Make</title>
 </head>
 <body>
 
 <!----NavBar Start----->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-    <img src="/navbarCar.jpg" alt="McQueen">
-    <ul class="navbar-nav mr-auto">
-        <li><a class="nav-link" href="/">Home</a></li>
-        <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
-        <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
-        <li><a class="nav-link" href="/home/specials">Specials</a></li>
-        <li><a class="nav-link" href="/home/contact">Contact</a></li>
-        <li><a class="nav-link" href="#">Sales</a></li>
-        <li><a class="nav-link" href="/admin">Admin</a></li>
+  <img src="/navbarCar.jpg" alt="McQueen">
+  <ul class="navbar-nav mr-auto">
+    <li><a class="nav-link" href="/">Home</a></li>
+    <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
+    <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
+    <li><a class="nav-link" href="/home/specials">Specials</a></li>
+    <li><a class="nav-link" href="/home/contact">Contact</a></li>
+    <li><a class="nav-link" href="#">Sales</a></li>
+    <li><a class="nav-link" href="/admin">Admin</a></li>
 
-    </ul>
+  </ul>
 </nav>
 <!----NavBar End----->
 
 <!-----Cars Manager Start---->
 <div class="container">
-    <div class="row m-4">
-        <div class="col text-center border border-dark">
-            <h1><a href="/" class="text-dark">Cars Manager</a></h1>
-        </div>
+  <div class="row m-4">
+    <div class="col text-center border border-dark">
+      <h1><a href="/" class="text-dark">Cars Manager</a></h1>
     </div>
-    <div class="row m-4 border border-dark">
-        <div class="col text-center m-3">
-            <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
-        </div>
-
-        <div class="col text-center m-3">
-            <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
-        </div>
-
-        <div class="col text-center m-3">
-            <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
-        </div>
-
-        <div class="col text-center m-3">
-            <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
-        </div>
-        <div class="col text-center m-3">
-            <a href="/admin/addSpecial" class="btn btn-outline-primary btn-lg">Manage Specials</a>
-        </div>
-        <div class="col text-center m-3">
-            <a href="/admin/addMake" class="btn btn-outline-primary btn-lg">Add Make</a>
-        </div>
-        <div class="col text-center m-3">
-            <a href="/admin/addModel" class="btn btn-outline-primary btn-lg">Add Model</a>
-        </div>
+  </div>
+  <div class="row m-4 border border-dark">
+    <div class="col text-center m-3">
+      <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
     </div>
-<!-----Cars Manager End---->
 
-<div style="text-align: center;">
+    <div class="col text-center m-3">
+      <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
+    </div>
+
+    <div class="col text-center m-3">
+      <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
+    </div>
+
+    <div class="col text-center m-3">
+      <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
+    </div>
+    <div class="col text-center m-3">
+      <a href="/admin/addSpecial" class="btn btn-outline-primary btn-lg">Manage Specials</a>
+    </div>
+    <div class="col text-center m-3">
+      <a href="/admin/addMake" class="btn btn-outline-primary btn-lg">Add Make</a>
+    </div>
+    <div class="col text-center m-3">
+      <a href="/admin/addModel" class="btn btn-outline-primary btn-lg">Add Model</a>
+    </div>
+  </div>
+  <!-----Cars Manager End---->
+
+  <div style="text-align: center;">
     <h1 style=" margin-top: 2.5%">Add New Make</h1>
     <br>
     <form action="addMake" method="POST">
-        <input type="text" id="insertMakeBox" name="insertMakeBox" maxlength="16" size="16"
-               placeholder="Enter Make"><br><br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <input type="text" id="insertMakeBox" name="insertMakeBox" maxlength="16" size="16"
+             placeholder="Enter Make"><br><br>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <br><br>
     <small class="form-text text-muted">This action is for admin only</small>
-</div>
+  </div>
 </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

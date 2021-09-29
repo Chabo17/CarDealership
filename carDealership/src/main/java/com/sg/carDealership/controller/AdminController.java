@@ -38,12 +38,12 @@ public class AdminController {
    @Autowired
    UsersDao usersDao;
 
-   @Autowired
-   MakeDao makeDao;
+    @Autowired
+    MakeDao makeDao;
 
-   @Autowired
-   ModelDao myModelDao;
-   
+    @Autowired
+    ModelDao myModelDao;
+
    @GetMapping
     public String showAdminPage(Model model) {
         return "admin";
@@ -89,7 +89,7 @@ public class AdminController {
         String makeChoice = request.getParameter("make");
     */
     
-    @PutMapping("editSpecial")
+    @PostMapping("editSpecial")
     public String editSpecialRequest(HttpServletRequest request)
     {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -103,7 +103,7 @@ public class AdminController {
         specialsDao.updateSpecial(toEdit);
         
         
-        return "redirect:/addSpeical";
+        return "redirect:addSpecial";
     }
     
     /*
@@ -130,13 +130,13 @@ public class AdminController {
     }
     
     @GetMapping("deleteSpecial")
-    public String deleteSpecial(HttpServletRequest request, Model model)
+    public String deleteSpecial(Integer id)
     {
-        int id = Integer.parseInt(request.getParameter("id"));
+        
         specialsDao.deleteSpecialById(id);
         
         
-        return "redirect:/admin";
+        return "redirect:addSpecial";
         
         
     }
@@ -407,5 +407,6 @@ public class AdminController {
         myModelDao.addMyModel(newModel);
         return "redirect:/admin/addModel";
     }
+    
     
 }
