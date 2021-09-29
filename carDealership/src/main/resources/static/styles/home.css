@@ -55,14 +55,13 @@
     flex-wrap: wrap;
 }
 
-.childBox {
+.smallBox {
     flex: 1 0 21%; /* So it makes 4 boxes per line (21*4=84), will never make the 5th box (needs 100)*/
-    margin: 10px;
+    margin: 15px;
     height: 200px;
-    background-color: wheat;
     transition: transform .3s;
 }
 
-.childBox:hover {
+.smallBox:hover {
     transform: scale(1.05);
 }

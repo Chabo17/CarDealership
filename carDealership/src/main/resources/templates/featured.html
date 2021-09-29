@@ -24,24 +24,44 @@
     </ul>
 </nav>
 <!----NavBar End----->
+
+<!----Jumbotron Start----->
 <div class="jumbotron" id="jumbotron">
     <h1 id="headline">💲💲🤯 End of Course Sell 🤯💲💲</h1>
     <h2 id="headlineDescription">Check out this 🔥🔥 discount we got for <strong>YOU!</strong> Available until
         10/1/2021!</h2>
     <a id="checkItOutButton" class="btn btn-primary btn-lg" href="#" role="button">Check it out!</a>
 </div>
+<!----Jumbotron End----->
 
+<!----Featured Start----->
 <div id="featured" th:if="${isLoaded}">
     <h2 id="featuredHeadline"> Featured Vehicles: </h2>
-    <div>
-        <div><img th:src="${cars[0].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[0].salesPrice}"></span></div>
-        <div><img th:src="${cars[1].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[1].salesPrice}"></span></div>
-        <div><img th:src="${cars[2].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[2].salesPrice}"></span></div>
-        <div><img th:src="${cars[3].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[3].salesPrice}"></span></div>
-        <div><img th:src="${cars[4].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[4].salesPrice}"></span></div>
-        <div><img th:src="${cars[5].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[5].salesPrice}"></span></div>
-        <div><img th:src="${cars[6].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[6].salesPrice}"></span></div>
-        <div><img th:src="${cars[7].pictureURL}"><br><h3>fat car</h3><br><span th:text="${cars[7].salesPrice}"></span></div>
+    <div class="parentBox">
+        <div class="smallBox"><img th:src="${cars[0].pictureURL}"><br><span
+                th:text="${cars[0].makeYear} + '  ' + ${cars[1].make} + ' ' + ${cars[0].model}"></span><br><span
+                th:text="'$' + ${cars[0].salesPrice}"></span></div>
+        <div class="smallBox"><img th:src="${cars[1].pictureURL}"><br><span
+                th:text="${cars[1].makeYear} + '  ' + ${cars[7].make} + ' ' + ${cars[1].model}"></span><br><span
+                th:text="'$' + ${cars[1].salesPrice}"></span></div>
+        <div class="smallBox"><img th:src="${cars[2].pictureURL}"><br><span
+                th:text="${cars[2].makeYear} + '  ' + ${cars[2].make} + ' ' + ${cars[2].model}"></span><br><span
+                th:text="'$' + ${cars[2].salesPrice}"></span></div>
+        <div class="smallBox"><img th:src="${cars[3].pictureURL}"><br><span
+                th:text="${cars[3].makeYear} + '  ' + ${cars[3].make} + ' ' + ${cars[3].model}"></span><br><span
+                th:text="'$' + ${cars[3].salesPrice}"></span></div>
+        <div class="smallBox"><img th:src="${cars[4].pictureURL}"><br><span
+                th:text="${cars[4].makeYear} + '  ' + ${cars[4].make} + ' ' + ${cars[4].model}"></span><br><span
+                th:text="'$' + ${cars[4].salesPrice}"></span></div>
+        <div class="smallBox"><img th:src="${cars[5].pictureURL}"><br><span
+                th:text="${cars[5].makeYear} + '  ' + ${cars[5].make} + ' ' + ${cars[5].model}"></span><br><span
+                th:text="'$' + ${cars[5].salesPrice}"></span></div>
+        <div class="smallBox"><img th:src="${cars[6].pictureURL}"><br><span
+                th:text="${cars[6].makeYear} + '  ' + ${cars[6].make} + ' ' + ${cars[6].model}"></span><br><span
+                th:text="'$' + ${cars[6].salesPrice}"></span></div>
+        <div class="smallBox"><img th:src="${cars[7].pictureURL}"><br><span
+                th:text="${cars[7].makeYear} + '  ' + ${cars[7].make} + ' ' + ${cars[7].model}"></span><br><span
+                th:text="'$' + ${cars[7].salesPrice}"></span></div>
     </div>
 </div>
 
@@ -50,11 +70,18 @@
     <p>Try browsing us a later time</p>
 </div>
 
+<!----Featured End----->
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!-- use the the full jQuery build, NOT the slim build-->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 
 <!-- custom js files -->
 <script src="home.js"></script>
