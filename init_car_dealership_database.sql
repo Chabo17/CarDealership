@@ -44,10 +44,7 @@ CREATE TABLE inquire(
 
 CREATE TABLE specials(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	carId INT NOT NULL,
-    message VARCHAR(500) NOT NULL,
-    FOREIGN KEY (carId) REFERENCES cars(id)
-    
+    message VARCHAR(500) NOT NULL
 );
 
 

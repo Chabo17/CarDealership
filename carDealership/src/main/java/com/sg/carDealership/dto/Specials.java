@@ -22,7 +22,6 @@ public class Specials
     
     
     private int id;
-    private int carId;
     private String message;
 
     public int getId() {
@@ -33,13 +32,6 @@ public class Specials
         this.id = id;
     }
 
-    public int getCarId() {
-        return carId;
-    }
-
-    public void setCarId(int carId) {
-        this.carId = carId;
-    }
 
     public String getMessage() {
         return message;
@@ -53,7 +45,6 @@ public class Specials
     public int hashCode() {
         int hash = 7;
         hash = 17 * hash + this.id;
-        hash = 17 * hash + this.carId;
         hash = 17 * hash + Objects.hashCode(this.message);
         return hash;
     }
@@ -73,9 +64,6 @@ public class Specials
         if (this.id != other.id) {
             return false;
         }
-        if (this.carId != other.carId) {
-            return false;
-        }
         if (!Objects.equals(this.message, other.message)) {
             return false;
         }
@@ -84,7 +72,7 @@ public class Specials
 
     @Override
     public String toString() {
-        return "Specials{" + "id=" + id + ", carId=" + carId + ", message=" + message + '}';
+        return "Specials{" + "id=" + id + ", message=" + message + '}';
     }
     
     
