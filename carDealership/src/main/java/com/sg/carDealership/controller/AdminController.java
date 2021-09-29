@@ -75,10 +75,46 @@ public class AdminController {
         
         s = specialsDao.addSpecial(s);
         
+        return "redirect:/admin/addSpecial";
+        
+        
+    }
+    
+    /*
+     public String editCar(HttpServletRequest request, Model model) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cars car = carsDao.getCarById(id);
+        
+        String[] makeList = {"Audi", "Honda", "China"};//dao get list of items
+        model.addAttribute("makeList", makeList);
+        
+    */
+    
+    @GetMapping("editSpecial")
+    public String editSpecial(HttpServletRequest request, Model model)
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Specials toEdit = specialsDao.getSpecialById(id);
+        
+        model.addAttribute("toEdit", toEdit);
+        
+        return "editSpecial";
+        
+        
+    }
+    
+    @GetMapping("deleteSpecial")
+    public String deleteSpecial(HttpServletRequest request, Model model)
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+        specialsDao.deleteSpecialById(id);
+        
+        
         return "redirect:/admin";
         
         
     }
+    
     
     @PostMapping("addCar")
     public String addCarRequest(Cars newcar, HttpServletRequest request)
@@ -286,29 +322,40 @@ public class AdminController {
     }
      
     
-//    @GetMapping("editUser")
-//    public String editCar(HttpServletRequest request, Model model) {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Teacher teacher = teacherDao.getTeacherById(id);
-//        
-//        model.addAttribute("teacher", teacher);
-//        return "editTeacher";
-//    }
-//    
-//    @PostMapping("editUser")
-//    public String performEditTeacher(HttpServletRequest request) {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Teacher teacher = teacherDao.getTeacherById(id);
-//        
-//        teacher.setFirstName(request.getParameter("firstName"));
-//        teacher.setLastName(request.getParameter("lastName"));
-//        teacher.setSpecialty(request.getParameter("specialty"));
-//        
-//        teacherDao.updateTeacher(teacher);
-//        
-//        return "redirect:/teachers";
-//    }
-//     
+    @GetMapping("editUser")
+    public String editUser(HttpServletRequest request, Model model) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Users user = usersDao.getUserById(id);
+        
+        String[] roles = {"User", "Admin"};
+        model.addAttribute("roles", roles);
+        model.addAttribute("user", user);
+        return "editUsers";
+    }
+    
+    @PostMapping("editUser")
+    public String performEditUser(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Users newUser = usersDao.getUserById(id);
+        
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String cpassword = request.getParameter("cpassword");
+        String role = request.getParameter("role");
+        
+        newUser.setFirstName(fname);
+        newUser.setLastName(lname);
+        newUser.setEmail(email);
+        newUser.setUserPassword(password);
+        newUser.setUserRole(role);
+        
+        usersDao.updateUser(newUser);
+        
+        return "redirect:/admin/users";
+    }
+     
     
     
 }

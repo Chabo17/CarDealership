@@ -16,8 +16,8 @@
         <li><a class="nav-link" href="/">Home</a></li>
         <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
         <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
-        <li><a class="nav-link" href="#">Specials</a></li>
-        <li><a class="nav-link" href="#">Contact</a></li>
+        <li><a class="nav-link" href="/home/specials">Specials</a></li>
+        <li><a class="nav-link" href="/home/contact">Contact</a></li>
         <li><a class="nav-link" href="#">Sales</a></li>
         <li><a class="nav-link" href="/admin">Admin</a></li>
 
@@ -70,7 +70,7 @@
                                 <td th:text="${user.userRole}">Role</td>
                                 <td th:text="${user.userPassword}">Password</td>
                                 
-                                <td>Edit</td>
+                                <td><a href="#" th:href="@{/admin/editUser(id=${user.getId()})}">Edit</a></td>
                                 <td><a href="#" th:href="@{/admin/deleteUser(id=${user.getId()})}">Delete</a></td>
                             </tr>
                         </tbody>
