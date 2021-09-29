@@ -10,6 +10,7 @@ import com.sg.carDealership.dao.InquireDao;
 import com.sg.carDealership.dao.SpecialsDao;
 import com.sg.carDealership.dao.UsersDao;
 import com.sg.carDealership.dto.Cars;
+import com.sg.carDealership.dto.Specials;
 import com.sg.carDealership.dto.Users;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,31 @@ public class AdminController {
         List<Cars> cars = carsDao.getAllCars();
         model.addAttribute("carsfiltered", cars);
         return "cars";
+        
+    }
+    
+    @GetMapping("addSpecial")
+    public String addSpecialAdmin(Model model)
+    {
+        List<Specials> specials = specialsDao.getAllSpecials();
+    
+    
+        model.addAttribute("specials", specials);
+        
+        return "addSpecials";
+    }
+    
+    
+    @PostMapping("addSpecial")
+    public String addSpecialAdminRequest(String message)
+    {
+        Specials s = new Specials();
+        s.setMessage(message);
+        
+        s = specialsDao.addSpecial(s);
+        
+        return "redirect:/admin"
+        
         
     }
     
