@@ -11,7 +11,7 @@
 <body>
 <!----NavBar Start----->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-    <img src="navbarCar.jpg" alt="McQueen">
+    <img src="/navbarCar.jpg" alt="McQueen">
     <ul class="navbar-nav mr-auto">
         <li><a class="nav-link" href="/">Home</a></li>
         <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
@@ -28,15 +28,24 @@
 <div class="container">
             <div class="row m-4">
                 <div class="col text-center border border-dark">
-                    <h1><a href="/" class="text-dark">Users Manager</a></h1>
+                    <h1><a href="/" class="text-dark">Cars Manager</a></h1>
                 </div>
             </div>
             <div class="row m-4 border border-dark">
                 <div class="col text-center m-3">
-                    <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Cars</a>
+                    <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
                 </div>
+                
                 <div class="col text-center m-3">
-                    <a href="/admin/users" class="btn btn-outline-primary btn-lg">Users</a>
+                    <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
+                </div>
+                
+                <div class="col text-center m-3">
+                    <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
+                </div>
+                
+                <div class="col text-center m-3">
+                    <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
                 </div>
             </div>
             <div class="row m-4 border border-dark">
@@ -46,80 +55,30 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Teacher</th>
-                                <th>Details</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Password</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="course : ${courses}">
-                                <td th:text="${course.id}">Course ID</td>
-                                <td th:text='${course.name}'>Course Name</td>
-                                <td th:text="${course.teacher.firstName + ' ' 
-                                    + course.teacher.lastName}">Teacher  Name</td>
-                                <td>><a href="#" th:href="@{/courseDetail(id=${course.id})}">Details</a></td>
-                                <td><a href="#" th:href="@{/editCourse(id=${course.id})}">Edit</a></td>
-                                <td><a href="#" th:href="@{/deleteCourse(id=${course.id})}">Delete</a></td>
+                            <tr th:each="user : ${users}">
+                                <td th:text="${user.id}">User ID</td>
+                                <td th:text="${user.firstName + ' ' + user.lastName}">Name</td>
+                                <td th:text="${user.email}">Email</td>
+                                <td th:text="${user.userRole}">Role</td>
+                                <td th:text="${user.userPassword}">Password</td>
+                                
+                                <td>Edit</td>
+                                <td><a href="#" th:href="@{/admin/deleteUser(id=${user.getId()})}">Delete</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
     
-                           <div class="row m-4 border border-dark">
-                <div class="col-3 text-center m-3">
-                    <span class="h3">Add Users</span>
-                </div>
-                <div class="col-7 text-center m-3">
-                    <form action="addCourse" method="POST">
-                        <div class="form-group row">
-                            <label for="name" class="col-3 col-form-label">
-                                Name</label>
-                            <div class="col-9">
-                                <input type="text" name="name" 
-                                       id="name" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="description" class="col-3 col-form-label">
-                                Description</label>
-                            <div class="col-9">
-                                <input type="text" name="description" 
-                                       id="description" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="teacher" class="col-3 col-form-label">
-                                Teacher</label>
-                            <div class="col-9">
-                                <select id="teacher" name="teacherId" class="form-control" >
-                                    <option th:each="teacher : ${teachers}" 
-                                            th:value="${teacher.id}" 
-                                            th:text="${teacher.firstName + ' ' 
-                                                + teacher.lastName}">
-                                        Teacher Name</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="students" class="col-3 col-form-label">
-                                Students</label>
-                            <div class="col-9">
-                                <select multiple id="students" name="studentId" 
-                                        class="form-control" >
-                                    <option th:each="student : ${students}" 
-                                            th:value="${student.id}" 
-                                            th:text="${student.firstName + ' ' 
-                                                + student.lastName}">
-                                        Student Name</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Course</button>
-                    </form>
-                </div>
-            </div>
+
     
     
         </div>

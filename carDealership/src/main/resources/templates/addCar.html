@@ -36,6 +36,31 @@
 </nav>
  
  
+ 
+ <div class="container">
+            <div class="row m-4">
+                <div class="col text-center border border-dark">
+                    <h1><a href="/" class="text-dark">Cars Manager</a></h1>
+                </div>
+            </div>
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <a href="/admin/addCar" class="btn btn-outline-primary btn-lg">Add Car</a>
+                </div>
+                
+                <div class="col text-center m-3">
+                    <a href="/admin/cars" class="btn btn-outline-primary btn-lg">Show Inventory</a>
+                </div>
+                
+                <div class="col text-center m-3">
+                    <a href="/admin/addUser" class="btn btn-outline-primary btn-lg">Add Users</a>
+                </div>
+                
+                <div class="col text-center m-3">
+                    <a href="/admin/users" class="btn btn-outline-primary btn-lg">Show Users</a>
+                </div>
+            </div>
+     
 <div class="row m-4">
     <div id = "contactUs" class = "col-md-6">       
         <form role = "form" id ="contactForm" action="/admin/addCar" method="POST">
@@ -267,93 +292,24 @@
 
     </div>
  
- 
-    <div class="col-md-6">
-        
-        <div class="row border border-dark">
-                <div class="col text-center m-3">
-                    <table class="table table-striped col-md-12">
-                        <tbody>
-                            <tr th:each="car : ${carsfiltered}">
-                                <td>
-                                    <div class="row">
-                                        <div class="col-md-12 text-left">
-                                            <div class="well"><div class="col-md-4" th:text="${car.getMakeYear() + ' ' + car.getMake() + ' ' + car.getModel()}">year make model</div></div>
-                                        </div>
-                                    </div>     
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="well"><img src="/test.jpg" class="rounded float-left" alt="...">
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="row m-4">
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">Body Style: <span th:text="${car.getBodyStyle()}">test</span></div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">Interior: <span th:text="${car.getInteriorColor()}">test</span></div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">Sale Price: <span th:text="${car.getSalesPrice()}">test</span></div>
-                                                </div>
-                                            </div>
-                                            <div class="row m-4">
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">Trans: <span th:text="${car.getTrans()}">test</span></div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">Mileage: <span th:text="${car.getMileage()}">test</span></div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">MSRP: <span th:text="${car.getMsrp()}">test</span></div>
-                                                </div>
-                                            </div>
-                                            <div class="row m-4">
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">Color: <span th:text="${car.getColor()}">test</span></div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="well text-right">Vin#: <span th:text="${car.getVinNumber()}">test</span></div>
-                                                    
-                                                </div>
-                                                
-                                                
-
-                                                <div class="col-md-4">
-                                                    <div class="well text-right"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-10 text-right">
-                                            <div class="well">Edit</div>
-                                        </div>
-                                        
-                                        <div class="col-md-2 text-right">
-                                            <div class="well"><a href="#" th:href="@{/admin/deleteCar(id=${car.getId()})}">Delete</a></div>
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        
-        
-        </div>
+  
     </div>
+
+                
+            
+    
+    
+    
+
+
+       
+
+    </div>
+ 
+ 
+ 
+ 
+
         <!-- submit button -->
 
     
