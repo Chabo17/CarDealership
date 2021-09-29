@@ -36,17 +36,17 @@
     <!--container for Specials -->
     
     <div id="Specials">  
-        <h2>Specials</h2>
         
-        <form role = "form" id ="addSpecialsForm" action="/admin/addSpecial" method="POST">
+        
+        <form role = "form" id ="addSpecialsForm" action="/admin/addSpecial" method="GET">
             
             <div>
-            <h2>Add a Special  </h2>
+            <h2>Edit Special  </h2>
             </div>
             
             <div>
                 <label id="addMessagelabel">message</label>
-                <textarea id="addMessagetextarea" name="message" rows="10" cols="20"></textarea>
+                <textarea th:text="${toEdit.message}" id="addMessagetextarea" name="message" rows="10" cols="20"></textarea>
                     
             </div>
             
@@ -62,20 +62,7 @@
             
         </form>
         
-        <table id="SpecialsTable" class="table table-hover">
-
-        <!-- we will add data rows dynamically to the tbody -->
-        <p style="padding: 10px; border: 3px solid black;">
-        <tbody>
-            <tr th:each="special : ${specials}">
-                <td th:text="${special.message}">Message</td>
-                <td><a href="#" th:href="@{/admin/editSpecial(id=${special.getId()})}">Edit</a></td>
-                <td><a href="#" th:href="@{/admin/deleteSpecial(id=${special.getId()})}">Delete</a></td>
-            </tr>
-        </tbody>
-
-        </p>
-    </table> 
+        
     </div> 
 
    

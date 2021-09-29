@@ -75,10 +75,46 @@ public class AdminController {
         
         s = specialsDao.addSpecial(s);
         
+        return "redirect:/admin/addSpecial";
+        
+        
+    }
+    
+    /*
+     public String editCar(HttpServletRequest request, Model model) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cars car = carsDao.getCarById(id);
+        
+        String[] makeList = {"Audi", "Honda", "China"};//dao get list of items
+        model.addAttribute("makeList", makeList);
+        
+    */
+    
+    @GetMapping("editSpecial")
+    public String editSpecial(HttpServletRequest request, Model model)
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Specials toEdit = specialsDao.getSpecialById(id);
+        
+        model.addAttribute("toEdit", toEdit);
+        
+        return "editSpecial";
+        
+        
+    }
+    
+    @GetMapping("deleteSpecial")
+    public String deleteSpecial(HttpServletRequest request, Model model)
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+        specialsDao.deleteSpecialById(id);
+        
+        
         return "redirect:/admin";
         
         
     }
+    
     
     @PostMapping("addCar")
     public String addCarRequest(Cars newcar, HttpServletRequest request)
