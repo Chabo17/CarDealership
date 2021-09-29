@@ -10,6 +10,7 @@ import com.sg.carDealership.dao.InquireDao;
 import com.sg.carDealership.dao.SpecialsDao;
 import com.sg.carDealership.dao.UsersDao;
 import com.sg.carDealership.dto.Cars;
+import com.sg.carDealership.dto.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,13 @@ public class AdminController {
         return "admin";
     }
     
-
+    @GetMapping("cars")
+    public String showCars(Model model) {
+        List<Cars> cars = carsDao.getAllCars();
+        model.addAttribute("carsfiltered", cars);
+        return "cars";
+        
+    }
     
     @PostMapping("addCar")
     public String addCarRequest(Cars newcar, HttpServletRequest request)
@@ -91,7 +98,7 @@ public class AdminController {
         
         carsDao.addCar(newcar);
         
-        return "redirect:/admin/addCar";
+        return "redirect:/admin/cars";
     }
     
     @GetMapping("addCar")
@@ -117,27 +124,62 @@ public class AdminController {
         String[] interList = {"Gold", "Black", "Silver"};
         model.addAttribute("interList", interList);
         
-        
-        List<Cars> cars = carsDao.getAllCars();
-        model.addAttribute("carsfiltered", cars);
-        
-        
         return "addCar";
     }
     
     @GetMapping("deleteCar")
-    public String deleteCourse(Integer id) {
+    public String deleteCar(Integer id) {
         carsDao.deleteCarById(id);
-        return "redirect:/admin/addCar";
+        return "redirect:/admin/cars";
+    }
+    
+    @GetMapping("deleteUser")
+    public String deleteUser(Integer id) {
+        usersDao.deleteUserById(id);
+        return "redirect:/admin/users";
     }
     
     @GetMapping("users")
     public String displayUsers(Model model) {
-        //List<Cars> cars = carsDao.getAllCars();
-        //model.addAttribute("cars", cars);
+        List<Users> users = usersDao.getAllUsers();
+        model.addAttribute("users", users);
         return "users";
     }
     
+    
+    @GetMapping("addUser")
+    public String addUser(Model model) {
+        String[] roles = {"User", "Admin"};
+        model.addAttribute("roles", roles);
+        return "addUser";
+    }
+    @PostMapping("addUser")
+    public String addUserRequest(Users newUser, HttpServletRequest request) {
+        
+        
+
+        
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String cpassword = request.getParameter("cpassword");
+        String role = request.getParameter("role");
+        
+        newUser.setFirstName(fname);
+        newUser.setLastName(lname);
+        newUser.setEmail(email);
+        newUser.setUserPassword(password);
+        newUser.setUserRole(role);
+        
+        usersDao.addUser(newUser);
+        
+
+        
+        
+        
+        return "redirect:/admin/users";
+    }
 
     
     
