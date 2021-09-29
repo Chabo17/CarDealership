@@ -18,14 +18,27 @@
     <!-- header goes here ----------------------------------------------->
 
     
-    
+     <!--- Container for Contact us -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <img src="/navbarCar.jpg" alt="McQueen">
+    <ul class="navbar-nav mr-auto">
+        <li><a class="nav-link" href="/">Home</a></li>
+        <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
+        <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
+        <li><a class="nav-link" href="/home/specials">Specials</a></li>
+        <li><a class="nav-link" href="/home/contact">Contact</a></li>
+        <li><a class="nav-link" href="#">Sales</a></li>
+        <li><a class="nav-link" href="/admin">Admin</a></li>
+
+    </ul>
+</nav>
     
     <!--container for Specials -->
     
     <div id="Specials">  
         <h2>Specials</h2>
         
-        <form role = "form" id ="addSpecialsForm" action="/admin/addSpecials" method="POST">
+        <form role = "form" id ="addSpecialsForm" action="/admin/addSpecial" method="POST">
             
             <div>
             <h2>Add a Special  </h2>
@@ -33,11 +46,11 @@
             
             <div>
                 <label id="addMessagelabel">message</label>
-                <<textarea id="addMessagetextarea" name="message" rows="20" cols="20"></textarea>
+                <textarea id="addMessagetextarea" name="message" rows="20" cols="20"></textarea>
                     
             </div>
             
-            <div>
+            <div class="col-md-6 row">
                 <button type="submitButton"
                     id="submitButton"
                     class="btn btn-primary"
@@ -55,8 +68,23 @@
         <p style="padding: 10px; border: 3px solid black;">
         <tbody>
             <tr th:each="special : ${specials}">
-                <td th:text="${special.carId}">Car ID</td>
                 <td th:text="${special.message}">Message</td>
+                <td> <form><div class="col-md-6 row">
+                <button type="button"
+                    id="editButton"
+                    class="btn btn-primary"
+                    >
+                    edit
+                </button>
+            </div></form> </td>
+                <td> <form><div class="col-md-6 row">
+                <button type="button"
+                    id="deleteButton"
+                    class="btn btn-primary"
+                    >
+                    delete
+                </button>
+            </div></form> </td>
             </tr>
         </tbody>
 
@@ -75,7 +103,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
       
     <!-- custom js files -->
+    
+    <!-- commented out
     <script src="specials.js"></script>
+    -->
+    
+    
+    <script th:inline="javascript">
+    $('document').ready( function () {
+        
+        
+        
+        alert('POL');
+    });
+    
+</script>
+    
     <!---GitHub\carDealership\CarDealership\carDealership\src\main\resources\static\scripts -->
 
     </body>

@@ -75,7 +75,7 @@ public class AdminController {
         
         s = specialsDao.addSpecial(s);
         
-        return "redirect:/admin"
+        return "redirect:/admin";
         
         
     }
