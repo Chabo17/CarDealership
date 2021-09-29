@@ -2,7 +2,4 @@
 .xml
 /carDealership/target/
 /carDealership/nbproject/
-
-*.properties
-
 *.properties

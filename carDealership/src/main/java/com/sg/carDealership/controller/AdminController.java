@@ -45,50 +45,38 @@ public class AdminController {
         return "admin";
     }
     
-    @GetMapping("cars")
-    public String displayCars(Model model) {
-        String[] makeList = {"Audi", "Honda", "China"};//dao get list of items
-        model.addAttribute("makeList", makeList);
-        
-        String[] modelList = {"A4", "S", "S3"};
-        model.addAttribute("modelList", modelList);
-        
-        String[] typeList = {"New", "Used", "Broken"};
-        model.addAttribute("typeList", typeList);
-        
-        String[] bodyList = {"Car", "SUV", "COUPE"};
-        model.addAttribute("bodyList", bodyList);
-        
-        String[] transList = {"Automatic", "Manual"};
-        model.addAttribute("transList", transList);
-        
-        String[] colorList = {"Black", "Red", "White"};
-        model.addAttribute("colorList", colorList);
-        
-        String[] interList = {"Gold", "Black", "Silver"};
-        model.addAttribute("interList", interList);
-        
-        
-        //List<Cars> cars = carsDao.getAllCars();
-        //model.addAttribute("cars", cars);
-        return "cars";
-    }
+
     
     @PostMapping("addCar")
-    public String addCarRequest(String make, String model, String carType, String bodyStyle, String year, 
-                                String trans, String color, String interiorColor, String mileage, String vinNumber,
-                                String msrp, String salesPrice, String description, String carName, String pictureURL)
+    public String addCarRequest(Cars newcar, HttpServletRequest request)
     {
-        Cars newcar = new Cars();
+        String makeChoice = request.getParameter("make");
+        String modelChoice = request.getParameter("model");
+        String typeChoice = request.getParameter("carType");
+        String colorChoice = request.getParameter("color");
+        String interiorChoice = request.getParameter("interiorColor");
+        String transChoice = request.getParameter("trans");
+        String bodyChoice = request.getParameter("bodyStyle");
         
-        newcar.setMake(make);
-        newcar.setModel(model);
-        newcar.setCarType(carType);
-        newcar.setBodyStyle(bodyStyle);
+        String year = request.getParameter("year");
+        String mileage = request.getParameter("mileage");
+        String vinNumber = request.getParameter("vinNumber");
+        String msrp = request.getParameter("msrp");
+        String salesPrice = request.getParameter("salesPrice");
+        String description = request.getParameter("description");
+        String carName = request.getParameter("carName");
+        String pictureURL = request.getParameter("pictureURL");
+        
+        
+ 
+        newcar.setMake(makeChoice);
+        newcar.setModel(modelChoice);
+        newcar.setCarType(typeChoice);
+        newcar.setBodyStyle(bodyChoice);
         newcar.setMakeYear(Integer.parseInt(year));
-        newcar.setTrans(trans);
-        newcar.setColor(color);
-        newcar.setInteriorColor(interiorColor);
+        newcar.setTrans(transChoice);
+        newcar.setColor(colorChoice);
+        newcar.setInteriorColor(interiorChoice);
         newcar.setMileage(Integer.parseInt(mileage));
         newcar.setVinNumber(vinNumber);
         newcar.setMsrp(Double.parseDouble(msrp));
@@ -103,7 +91,7 @@ public class AdminController {
         
         carsDao.addCar(newcar);
         
-        return "redirect:/featured";
+        return "redirect:/admin/addCar";
     }
     
     @GetMapping("addCar")
@@ -130,9 +118,17 @@ public class AdminController {
         model.addAttribute("interList", interList);
         
         
-        //List<Cars> cars = carsDao.getAllCars();
-        //model.addAttribute("cars", cars);
+        List<Cars> cars = carsDao.getAllCars();
+        model.addAttribute("carsfiltered", cars);
+        
+        
         return "addCar";
+    }
+    
+    @GetMapping("deleteCar")
+    public String deleteCourse(Integer id) {
+        carsDao.deleteCarById(id);
+        return "redirect:/admin/addCar";
     }
     
     @GetMapping("users")
@@ -142,34 +138,7 @@ public class AdminController {
         return "users";
     }
     
-    /*
 
-    @PostMapping("addCars")
-    public String addCar(Cars car, HttpServletRequest request) {
-        String makeChoice = request.getParameter("makelist");
-        String modelChoice = request.getParameter("modelList");
-        String typeChoice = request.getParameter("typeList");
-        String colorChoice = request.getParameter("colorList");
-        String interiorChoice = request.getParameter("makelist");
-        
-        
-        
-//        String[] studentIds = request.getParameterValues("studentId");
-//        
-//        course.setTeacher(teacherDao.getTeacherById(Integer.parseInt(teacherId)));
-//        
-//        List<Student> students = new ArrayList<>();
-//        for(String studentId : studentIds) {
-//            students.add(studentDao.getStudentById(Integer.parseInt(studentId)));
-//        }
-//        course.setStudents(students);
-//        courseDao.addCourse(course);
-//        
-        return "redirect:/admin/cars";
-    }
-
-    
-    */
     
     
     

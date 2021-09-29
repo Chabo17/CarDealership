@@ -11,15 +11,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Additional CSS files here -->
+    <link rel="stylesheet" href="./../styles/home.css">
+    
+    
+
 
   </head>
   <body>
 
 
  <!--- Container for Contact us -->
-    
-    
-    <div id = "contactUs" class = "col-md-12 row">       
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <img src="/navbarCar.jpg" alt="McQueen">
+    <ul class="navbar-nav mr-auto">
+        <li><a class="nav-link" href="/">Home</a></li>
+        <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
+        <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
+        <li><a class="nav-link" href="#">Specials</a></li>
+        <li><a class="nav-link" href="#">Contact</a></li>
+        <li><a class="nav-link" href="#">Sales</a></li>
+        <li><a class="nav-link" href="/admin">Admin</a></li>
+
+    </ul>
+</nav>
+ 
+ 
+<div class="row m-4">
+    <div id = "contactUs" class = "col-md-6">       
         <form role = "form" id ="contactForm" action="/admin/addCar" method="POST">
 
             <div class="form-group row">
@@ -200,7 +218,7 @@
                                 Description</label>
                             
                             <div class="col-6">
-                                <textarea id="addDescription" name="description" rows="4" cols="50">
+                                <textarea id="addDescription" name="description" rows="4" cols="40">
                                 </textarea>
                             </div>
                             
@@ -242,75 +260,100 @@
             </div>
            
             
-            
-            <!--
-            
-            <h1 style ="font-family:verdana;">Contact Us</h1>
-            <div class="form-group row col-md-3">
-                <label for="name" class="col-md-12 control-label">
-                    <td style="font: size 25px; ">Name</td>
-                    <input type="text" 
-                    class="form-control"
-                    id="addTitle"
-                    placeholder="Name" 
-                    style ="width: 300px;"
-                    required> 
-                </label>
-            </div>
-            
-
-            <div class="form-group row col-md-3">
-                <label for="email" class="col-md-3 control-label">   
-                    <td style="font: size 25px; ">Email</td>
-                    <input type="email" 
-                    class="form-control"
-                    id="addTitle"
-                    placeholder="Email" 
-                    style ="width: 300px;"
-                    required> 
-                </label>
-            </div>
-
-            <div class="form-group row col-md-3">
-                <label for="phone" class="col-md-3 control-label">   
-                    <td style="font: size 25px; ">Phone</td>
-                    <input type="phone" 
-                    class="form-control"
-                    id="addTitle"
-                    placeholder="Phone" 
-                    style ="width: 300px;"
-                    required> 
-                </label>
-            </div>
-            <div class="form-group row  col-md-3">
-                <label for="Message" class="col-md-3 control-label">   
-                    <td style="font: size 25px; ">Message</td>
-                    <textarea class="scrollabletextbox" name="Message" style = "height: 210px; width: 300px;">
-                      </textarea>
-                </label>
-            </div>
-            <form action="" > 
-            <div class="col-md-3 row">
-                <button type="submitButton"
-                    id="submitButton"
-                    class="btn btn-primary"
-                    >
-                    Submit
-                </button>
-            </div>
-            
-           
-            
-            </form>
-            
-            -->
         
         </form>
             
 
 
     </div>
+ 
+ 
+    <div class="col-md-6">
+        
+        <div class="row border border-dark">
+                <div class="col text-center m-3">
+                    <table class="table table-striped col-md-12">
+                        <tbody>
+                            <tr th:each="car : ${carsfiltered}">
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-12 text-left">
+                                            <div class="well"><div class="col-md-4" th:text="${car.getMakeYear() + ' ' + car.getMake() + ' ' + car.getModel()}">year make model</div></div>
+                                        </div>
+                                    </div>     
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="well"><img src="/test.jpg" class="rounded float-left" alt="...">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">Body Style: <span th:text="${car.getBodyStyle()}">test</span></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">Interior: <span th:text="${car.getInteriorColor()}">test</span></div>
+                                                </div>
 
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">Sale Price: <span th:text="${car.getSalesPrice()}">test</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">Trans: <span th:text="${car.getTrans()}">test</span></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">Mileage: <span th:text="${car.getMileage()}">test</span></div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">MSRP: <span th:text="${car.getMsrp()}">test</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-4">
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">Color: <span th:text="${car.getColor()}">test</span></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="well text-right">Vin#: <span th:text="${car.getVinNumber()}">test</span></div>
+                                                    
+                                                </div>
+                                                
+                                                
+
+                                                <div class="col-md-4">
+                                                    <div class="well text-right"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 text-right">
+                                            <div class="well">Edit</div>
+                                        </div>
+                                        
+                                        <div class="col-md-2 text-right">
+                                            <div class="well"><a href="#" th:href="@{/admin/deleteCar(id=${car.getId()})}">Delete</a></div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        
+        </div>
+    </div>
         <!-- submit button -->
 
     
