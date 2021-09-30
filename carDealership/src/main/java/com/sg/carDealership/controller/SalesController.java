@@ -10,6 +10,7 @@ import com.sg.carDealership.dao.Sales_Information_Record_DaoDbImpl;
 import com.sg.carDealership.dto.Cars;
 import com.sg.carDealership.dto.Sales_Information_Record;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,12 +33,108 @@ public class SalesController {
     @Autowired
     Sales_Information_Record_DaoDbImpl Sales;
 
+    
+
+   private int[] price = new int[20];
+   private int[] year = new int[20];
+
+   
+   private Model searchBoxPopulate(Model model){
+        for(int i=0; i < price.length; i++){
+            price[i] = (i*5000);
+        }
+
+        model.addAttribute("minprices", price);
+        model.addAttribute("maxprices", price);
+        
+
+        int counter = 0;
+        for(int i=2021; i > 2021-(year.length*5); i-=5){
+            year[counter] = i;
+            counter++;
+        }
+        
+        model.addAttribute("minyears", year);
+        model.addAttribute("maxyears", year);
+       
+       return model;
+   }
+   
     @GetMapping("index")
     public String ShowAllModels(Model model){
+        
+        
         List<Cars> allSearch = carsDao.getAllCars();
-        model.addAttribute("cars", allSearch);
+        
+        
+        model = searchBoxPopulate(model);
+        model.addAttribute("carsfiltered", allSearch);
+        model.addAttribute("condition", "Sales");
+        model.addAttribute("minpricevalue", price[0]);
+        model.addAttribute("maxpricevalue", price[price.length-1]);
+        model.addAttribute("maxyearvalue", year[0]);
+        model.addAttribute("minyearvalue", year[price.length-1]);
+        
         return "salesDisplay";
     }
+    
+    
+    @PostMapping("salesSearch")
+    public String performSalesSearch(HttpServletRequest request, Model model) {
+        
+        String minpriceString = request.getParameter("minprice");
+        String maxpriceString = request.getParameter("maxprice");
+        String minyearString = request.getParameter("minyear");
+        String maxyearString = request.getParameter("maxyear");
+        String searchBar = request.getParameter("searchName");
+        
+        
+        double minprice = Double.parseDouble(minpriceString); //needs to be double
+        double maxprice = Double.parseDouble(maxpriceString);
+        double minyear = Double.parseDouble(minyearString);
+        double maxyear = Double.parseDouble(maxyearString);
+        
+        model = searchBoxPopulate(model);
+        model.addAttribute("condition", "Used");
+        
+        model.addAttribute("minpricevalue", minprice);
+        model.addAttribute("maxpricevalue", maxprice);
+        model.addAttribute("minyearvalue", minyear);
+        model.addAttribute("maxyearvalue", maxyear);
+        model.addAttribute("searchvalue", searchBar);
+        
+        List<Cars> carList = carsDao.getAllCars();
+        List<Cars> tempList;
+        if(searchBar == null || searchBar.strip().isEmpty()){
+            //search bar is empty
+            tempList = carList
+                .stream()
+                .filter(c -> c.getMakeYear() >= minyear && 
+                        c.getMakeYear() <= maxyear && 
+                        c.getSalesPrice() >= minprice && 
+                        c.getSalesPrice() <= maxprice)
+                .collect(Collectors.toList());
+            
+        }else{
+            tempList = carList
+                .stream()
+                .filter(c -> c.getMakeYear() >= minyear && 
+                        c.getMakeYear() <= maxyear && 
+                        c.getSalesPrice() >= minprice && 
+                        c.getSalesPrice() <= maxprice &&
+                        (c.getMakeYear() + " " + c.getMake() + " " + c.getModel()).toUpperCase().contains(searchBar.strip().toUpperCase()))
+                .collect(Collectors.toList());
+            
+        }
+        
+        
+
+        model.addAttribute("carsfiltered", tempList);
+        
+        return "salesSearch";
+    }
+    
+    
     
     @GetMapping("purchase")
     public String SalesPurchase(HttpServletRequest request, Model model){
