@@ -5,8 +5,11 @@
  */
 package com.sg.carDealership.controller;
 
+import ch.qos.logback.core.pattern.parser.Parser;
 import com.sg.carDealership.dao.*;
 import com.sg.carDealership.dto.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,11 +75,12 @@ public class AdminController {
         model.addAttribute("maxyears", year);
         
         
+        
         return "cars";
         
     }
     
-     @GetMapping("cars/search")
+    @GetMapping("cars/search")
     public String showCars(HttpServletRequest request, Model model) {
         List<Cars> cars = carsDao.getAllCars();
         List<Cars> temp1;
@@ -261,10 +265,20 @@ public class AdminController {
     
     @GetMapping("addCar")
     public String addCarForm(Model model) {
-        String[] makeList = {"Audi", "Honda", "China"};//dao get list of items
+        
+        List<String> makeList = new ArrayList<>(Arrays.asList("Audi", "Honda", "China"));
+        List<Make> tempMake = makeDao.getAllMake();
+        for (int i = 0; i < tempMake.size(); i++) {
+            makeList.add(tempMake.get(i).getMake());
+        }
         model.addAttribute("makeList", makeList);
         
-        String[] modelList = {"A4", "S", "S3"};
+        List<String> modelList = new ArrayList<>(Arrays.asList("A4", "S", "S3"));
+        List<MyModel> tempModel = myModelDao.getAllMyModels();
+        for (int i = 0; i < tempModel.size(); i++) {
+            modelList.add(tempModel.get(i).getModel());
+        }
+        
         model.addAttribute("modelList", modelList);
         
         String[] typeList = {"New", "Used", "Broken"};

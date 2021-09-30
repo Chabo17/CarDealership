@@ -30,15 +30,104 @@
 
     <div class="container">
             <div class="col-5 m-3">
-                    <span class="h3">Vehicle Details</span>
+                    <span class="h3"  th:text="${condition} +  ' ' + Vehicles">Used</span>
+            </div>
+
+                        <form action="inventoryNewSearch" method="POST">
+                <div class="row col-md-12 m-3">
+                    
+                    
+                            <label for="searchName" class="col-form-label col-md-1">
+                                Quick Search</label>
+                            <div class="col-md-2">
+                                <input type="text" name="searchName" 
+                                       id="searchName" class="form-control" th:value="${searchvalue}"/>
+                            </div>
+                    
+                           
+                            <label for="minprice" class="col-form-label">
+                                Price($)</label>
+                            <div class="col-2">
+                                
+
+                                
+                                <select id="minprice" name="minprice" class="form-control" >
+                                    <option th:each="minprice : ${minprices}"
+                                            th:text="${minprice}"
+                                            th:selected="${minprice==minpricevalue}">
+                                        Min Price</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-2">
+                                <select id="maxprice" name="maxprice" class="form-control" >
+                                    <option 
+                                        th:each="minprice : ${maxprices}"
+                                        th:text="${minprice}"
+                                        th:selected="${minprice==maxpricevalue}">
+                                        Max Price</option>
+                                </select>
+                            </div>
+                    
+                    
+                                     
+                            <label for="minyear" class="col-form-label">
+                                Year</label>
+                            <div class="col-2">
+                                <select id="minyear" name="minyear" class="form-control" >
+                                    <option th:each="minprice : ${minyears}"
+                                        th:text="${minprice}"
+                                        th:selected="${minprice==minyearvalue}">
+                                        Min Year</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-2">
+                                <select id="maxyear" name="maxyear" class="form-control" >
+                                    <option th:each="minprice : ${maxyears}"
+                                            th:text="${minprice}"
+                                            th:selected="${minprice==maxyearvalue}">
+                                        Max Year</option>
+                                </select>
+                            </div>
+                            
+                            
+                    
+                            
+                    
+                    
+                    
+
+                </div>
+                
+                <div class="row col-md-2 offset-md-10">
+                    
+                    <div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                    
+                </div>
+            </form>
+
+
+
+
+
+
+            <div class="col-5 m-3">
+                    <span class="h3">Search Results</span>
             </div>
         
         
             <div class="row">
                 <div class="col text-center m-3">
-                    <div class="row">
-                        <div class="col-md-12 text-left">
-                            <div class="well">
+                    <table class="table table-striped col-md-12">
+                        <tbody>
+                        <tr th:each="car : ${carsfiltered}">
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-12 text-left">
+                                        <div class="well">
                                             <div class="col-md-4"
                                                  th:text="${car.getMakeYear() + ' ' + car.getMake() + ' ' + car.getModel()}">
                                                 year make model
@@ -103,27 +192,22 @@
                                                 <div class="well text-right"></div>
                                             </div>
                                         </div>
-                                        
-                                         <div class="row m-4">
-                                            <div class="col-md-12">
-                                                <div class="well text-left">Description: <span th:text="${car.getCarDescription()}">test</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        
                                     </div>
                                 </div>
-                    
-
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <div class="well"><a href="#" th:href="@{/home/contact(id=${car.getId()})}">Contact Us</a>
+                                        <div class="well"><a href="#" th:href="@{/inventory/details(id=${car.getId()})}">Details</a>
                                         </div>
                                     </div>
 
                                  
                                 </div>
+
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
