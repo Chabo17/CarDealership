@@ -42,13 +42,13 @@ public class CarsDaoDbImpl implements CarsDao {
     @Override
     public List<Cars> getAllNewCars() 
     {
-        final String SELECT_ALL_NEW_CARS = "SELECT * FROM cars WHERE newCar = 1";
+        final String SELECT_ALL_NEW_CARS = "SELECT * FROM cars WHERE carType = 'New' ";
         return jdbc.query(SELECT_ALL_NEW_CARS, new CarMapper());
     }
 
     @Override
     public List<Cars> getAllUsedCars() {
-        final String SELECT_ALL_NEW_CARS = "SELECT * FROM cars WHERE newCar = 0";
+        final String SELECT_ALL_NEW_CARS = "SELECT * FROM cars WHERE carType = 'Used'";
         return jdbc.query(SELECT_ALL_NEW_CARS, new CarMapper());
     }
 
