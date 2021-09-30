@@ -6,6 +6,7 @@
 package com.sg.carDealership.controller;
 
 import com.sg.carDealership.dao.CarsDao;
+import com.sg.carDealership.dao.CarsSearchDao;
 import com.sg.carDealership.dao.InquireDao;
 import com.sg.carDealership.dao.SpecialsDao;
 import com.sg.carDealership.dto.Inquire;
@@ -35,6 +36,10 @@ public class HomeController
     
     @Autowired
     InquireDao inquireDao;
+    
+        
+    @Autowired
+    CarsSearchDao searchDao;
     
     
     

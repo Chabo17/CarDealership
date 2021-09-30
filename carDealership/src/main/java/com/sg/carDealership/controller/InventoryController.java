@@ -6,6 +6,7 @@
 package com.sg.carDealership.controller;
 
 import com.sg.carDealership.dao.CarsDao;
+import com.sg.carDealership.dao.CarsSearchDao;
 import com.sg.carDealership.dao.InquireDao;
 import com.sg.carDealership.dao.SpecialsDao;
 import com.sg.carDealership.dao.UsersDao;
@@ -38,6 +39,10 @@ public class InventoryController {
    
    @Autowired
    UsersDao usersDao;
+   
+       
+    @Autowired
+    CarsSearchDao searchDao;
    
    private int[] price = new int[20];
    private int[] year = new int[20];
