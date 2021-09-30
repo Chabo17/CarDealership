@@ -97,7 +97,7 @@
                                 
                                 <select id="minprice" name="minprice" class="form-control" >
                                     <option th:each="minprice : ${minprices}"
-                                            th:text="${'$'+minprice}">
+                                            th:text="${minprice}">
                                         Min Price</option>
                                 </select>
                             </div>
@@ -106,7 +106,7 @@
                                 <select id="maxprice" name="maxprice" class="form-control" >
                                     <option 
                                         th:each="minprice : ${maxprices}"
-                                        th:text="${'$'+minprice}">
+                                        th:text="${minprice}">
                                         Max Price</option>
                                 </select>
                             </div>
@@ -271,7 +271,10 @@
         crossorigin="anonymous"></script>
 
 <!-- custom js files -->
+<!-- commented out
 <script src="specials.js"></script>
+-->
+
 <!---GitHub\carDealership\CarDealership\carDealership\src\main\resources\static\scripts -->
 
 </body>

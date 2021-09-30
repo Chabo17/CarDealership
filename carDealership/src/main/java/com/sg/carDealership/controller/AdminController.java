@@ -46,7 +46,10 @@ public class AdminController {
 
     @Autowired
     ModelDao myModelDao;
-
+    
+    @Autowired
+    CarsSearchDao searchDao;
+    
    @GetMapping
     public String showAdminPage(Model model) {
         return "admin";
@@ -80,33 +83,50 @@ public class AdminController {
         
     }
     
-    @GetMapping("cars/search")
-    public String showCars(HttpServletRequest request, Model model) {
-        List<Cars> cars = carsDao.getAllCars();
+
+     @GetMapping("cars/search")
+    public String showCars(HttpServletRequest request, Model model) 
+    {
+        
+        String keyword = request.getParameter("searchName");
+        
+        
+        List<Cars> cars = searchDao.getfilteredCars("%"+keyword+"%");
         List<Cars> temp1;
         
-        try{
-            double minprice = Double.parseDouble(request.getParameter("minprice"));
+        
+            int minprice = Integer.parseInt(request.getParameter("minprice"));
             
-            double maxprice = Double.parseDouble(request.getParameter("maxprice"));
             
-            temp1 = cars.stream().filter(car -> car.getSalesPrice() >= minprice && car.getSalesPrice() <= maxprice).collect(Collectors.toList());
-
-        }catch(Exception e)
-        {
-            temp1 = cars;
-        }
+            
+            int maxprice = Integer.parseInt(request.getParameter("maxprice"));
+            
+            // System.out.println("\n\n POL \n\n INSIDE ADMIN/CARS/SEARCH");
+            
+            // System.out.println("min price : " + minprice);
+            
+            // System.out.println("max price : " + maxprice);
+            
+            temp1 = cars.stream().filter(car -> ((int) car.getSalesPrice()) >= minprice).collect(Collectors.toList());
+            
+            temp1 = temp1.stream().filter(car -> ((int) car.getSalesPrice()) <= maxprice).collect(Collectors.toList());
+            
+            
+       
         
         List<Cars> temp2;
         
-        try{
-        int minyear = Integer.parseInt(request.getParameter("minyear"));
-        int maxyear = Integer.parseInt(request.getParameter("minyear"));
-            temp2 = temp1.stream().filter(car -> car.getMakeYear() >= minyear && car.getMakeYear()<=maxyear).collect(Collectors.toList());
-        }catch(Exception e)
-        {
-            temp2 = temp1;
-        }
+        
+            int minyear = Integer.parseInt(request.getParameter("minyear"));
+            int maxyear = Integer.parseInt(request.getParameter("maxyear"));
+            
+            // System.out.println("min year : "+ minyear);
+            // System.out.println("max year : " + maxyear);
+            
+            temp2 = temp1.stream().filter(car -> car.getMakeYear() >= minyear).collect(Collectors.toList());
+            temp2 = temp2.stream().filter(car -> car.getMakeYear() <= maxyear).collect(Collectors.toList());
+            
+        
         
         
         model.addAttribute("carsfiltered", temp2);
