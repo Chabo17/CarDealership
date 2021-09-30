@@ -52,18 +52,18 @@ public class Sales_Information_Record_DaoDbImpl implements Sales_Information_Rec
     @Transactional
     public Sales_Information_Record addSIR(Sales_Information_Record sir) 
     {
-        final String INSERT_SIR = "INSERT INTO sales_information_record(s_i_names, s_i_phone,"
+        final String INSERT_SIR = "INSERT INTO sales_information_record(s_i_names, s_i_email, s_i_phone,"
                                 + "s_i_street_1, s_i_street_2, s_i_city, s_i_state, s_i_zipcode,"
                                 + " s_r_purchase_price, s_r_purchase_type, user_id, car_id ) "
-                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbc.update(INSERT_SIR,
                 sir.getS_i_names(),
+                sir.getS_i_email(),
                 sir.getS_i_phone(),
                 sir.getS_i_street_1(),
                 sir.getS_i_street_2(),
                 sir.getS_i_city(),
                 sir.getS_i_state(),
-                sir.getS_i_email(),
                 sir.getS_i_zipcode(),
                 sir.getS_r_purchase_price(),
                 sir.getS_r_purchase_type(),

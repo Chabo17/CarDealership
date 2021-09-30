@@ -1,7 +1,6 @@
-DROP DATABASE IF EXISTS carDealer;
-CREATE DATABASE carDealer;
-
-USE carDealer;
+DROP DATABASE IF EXISTS carDealerTest;
+CREATE DATABASE carDealerTest;
+USE carDealerTest;
 
 CREATE TABLE cars(
     id INT PRIMARY KEY AUTO_INCREMENT,
