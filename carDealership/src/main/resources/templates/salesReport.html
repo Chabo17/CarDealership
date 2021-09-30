@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- Additional CSS files here -->
+  <link rel="stylesheet" href="./../styles/home.css">
+  <title>Car Dealership Reports Report</title>
+</head>
+<body>
+<!----NavBar Start----->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+  <img src="/navbarCar.jpg" alt="McQueen">
+  <ul class="navbar-nav mr-auto">
+    <li><a class="nav-link" href="/">Home</a></li>
+    <li><a class="nav-link" href="/inventory/new">New Inventory</a></li>
+    <li><a class="nav-link" href="/inventory/used">Used Inventory</a></li>
+    <li><a class="nav-link" href="/home/specials">Specials</a></li>
+    <li><a class="nav-link" href="/home/contact">Contact</a></li>
+    <li><a class="nav-link" href="/sales/index">Sales</a></li>
+    <li><a class="nav-link" href="/admin">Admin</a></li>
+
+  </ul>
+</nav>
+<!----NavBar End----->
+<div style="margin: 30px">
+  <h1>Sales Report</h1>
+  <br>
+  <div class="col text-center border border-dark">
+    <h3>Filters</h3>
+    <br>
+    <form action="salesReport" method="POST">
+      <label for="user" class="col-3 col-form-label">
+        User</label>
+      <select id="user" name="user">
+        <option th:each="user : ${users}"
+                th:value="${user}"
+                th:text="${user}">
+        </option>
+      </select>
+      <br>
+      <label for="user" class="col-3 col-form-label">
+        From Date</label>
+      <input type="text" id="fromDateBox" name="fromDateBox" maxlength="16" size="16"
+             placeholder="From Date"><br>
+
+      <label for="user" class="col-3 col-form-label">
+        From Date</label>
+      <input type="text" id="toDateBox" name="toDateBox" maxlength="16" size="16"
+             placeholder="To Date"><br>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br>
+  </div>
+  <h3>Search Results</h3><br>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Total Sales</th>
+      <th>Total Vehicles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="salesReslt : ${usedCars}">
+      <td th:text="${salesReslt.user}">User</td>
+      <td th:text="${salesReslt.totalSales}">Total Sales</td>
+      <td th:text="${salesReslt.totalVehicles}">Total Vehicles</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
