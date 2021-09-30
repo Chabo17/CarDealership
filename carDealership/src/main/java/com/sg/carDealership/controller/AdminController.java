@@ -5,10 +5,14 @@
  */
 package com.sg.carDealership.controller;
 
+import ch.qos.logback.core.pattern.parser.Parser;
 import com.sg.carDealership.dao.*;
 import com.sg.carDealership.dto.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,7 +46,10 @@ public class AdminController {
 
     @Autowired
     ModelDao myModelDao;
-
+    
+    @Autowired
+    CarsSearchDao searchDao;
+    
    @GetMapping
     public String showAdminPage(Model model) {
         return "admin";
@@ -71,7 +78,78 @@ public class AdminController {
         model.addAttribute("maxyears", year);
         
         
+        
         return "cars";
+        
+    }
+    
+
+     @GetMapping("cars/search")
+    public String showCars(HttpServletRequest request, Model model) 
+    {
+        
+        String keyword = request.getParameter("searchName");
+        
+        
+        List<Cars> cars = searchDao.getfilteredCars("%"+keyword+"%");
+        List<Cars> temp1;
+        
+        
+            int minprice = Integer.parseInt(request.getParameter("minprice"));
+            
+            
+            
+            int maxprice = Integer.parseInt(request.getParameter("maxprice"));
+            
+            // System.out.println("\n\n POL \n\n INSIDE ADMIN/CARS/SEARCH");
+            
+            // System.out.println("min price : " + minprice);
+            
+            // System.out.println("max price : " + maxprice);
+            
+            temp1 = cars.stream().filter(car -> ((int) car.getSalesPrice()) >= minprice).collect(Collectors.toList());
+            
+            temp1 = temp1.stream().filter(car -> ((int) car.getSalesPrice()) <= maxprice).collect(Collectors.toList());
+            
+            
+       
+        
+        List<Cars> temp2;
+        
+        
+            int minyear = Integer.parseInt(request.getParameter("minyear"));
+            int maxyear = Integer.parseInt(request.getParameter("maxyear"));
+            
+            // System.out.println("min year : "+ minyear);
+            // System.out.println("max year : " + maxyear);
+            
+            temp2 = temp1.stream().filter(car -> car.getMakeYear() >= minyear).collect(Collectors.toList());
+            temp2 = temp2.stream().filter(car -> car.getMakeYear() <= maxyear).collect(Collectors.toList());
+            
+        
+        
+        
+        model.addAttribute("carsfiltered", temp2);
+        
+        int[] price = new int[20];
+        for(int i=0; i < price.length; i++){
+            price[i] = (i*5000);
+        }
+        model.addAttribute("minprices", price);
+        model.addAttribute("maxprices", price);
+        
+        int[] year = new int[20];
+        int counter = 0;
+        for(int i=2021; i > 2021-year.length; i--){
+            year[counter] = i;
+            counter++;
+        }
+        
+        model.addAttribute("minyears", year);
+        model.addAttribute("maxyears", year);
+        
+        
+        return "carsSearch";
         
     }
     
@@ -207,10 +285,20 @@ public class AdminController {
     
     @GetMapping("addCar")
     public String addCarForm(Model model) {
-        String[] makeList = {"Audi", "Honda", "China"};//dao get list of items
+        
+        List<String> makeList = new ArrayList<>(Arrays.asList("Audi", "Honda", "China"));
+        List<Make> tempMake = makeDao.getAllMake();
+        for (int i = 0; i < tempMake.size(); i++) {
+            makeList.add(tempMake.get(i).getMake());
+        }
         model.addAttribute("makeList", makeList);
         
-        String[] modelList = {"A4", "S", "S3"};
+        List<String> modelList = new ArrayList<>(Arrays.asList("A4", "S", "S3"));
+        List<MyModel> tempModel = myModelDao.getAllMyModels();
+        for (int i = 0; i < tempModel.size(); i++) {
+            modelList.add(tempModel.get(i).getModel());
+        }
+        
         model.addAttribute("modelList", modelList);
         
         String[] typeList = {"New", "Used", "Broken"};

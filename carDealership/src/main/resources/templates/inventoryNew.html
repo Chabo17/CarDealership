@@ -33,7 +33,7 @@
                     <span class="h3"  th:text="${condition} +  ' ' + Vehicles">Used</span>
             </div>
 
-                        <form action="searchbox" method="POST">
+                        <form action="inventoryNewSearch" method="POST">
                 <div class="row col-md-12 m-3">
                     
                     
@@ -41,19 +41,20 @@
                                 Quick Search</label>
                             <div class="col-md-2">
                                 <input type="text" name="searchName" 
-                                       id="searchName" class="form-control"/>
+                                       id="searchName" class="form-control" th:value="${searchvalue}"/>
                             </div>
                     
                            
                             <label for="minprice" class="col-form-label">
-                                Price</label>
+                                Price($)</label>
                             <div class="col-2">
                                 
 
                                 
                                 <select id="minprice" name="minprice" class="form-control" >
                                     <option th:each="minprice : ${minprices}"
-                                            th:text="${'$'+minprice}">
+                                            th:text="${minprice}"
+                                            th:selected="${minprice==minpricevalue}">
                                         Min Price</option>
                                 </select>
                             </div>
@@ -62,7 +63,8 @@
                                 <select id="maxprice" name="maxprice" class="form-control" >
                                     <option 
                                         th:each="minprice : ${maxprices}"
-                                        th:text="${'$'+minprice}">
+                                        th:text="${minprice}"
+                                        th:selected="${minprice==maxpricevalue}">
                                         Max Price</option>
                                 </select>
                             </div>
@@ -74,7 +76,8 @@
                             <div class="col-2">
                                 <select id="minyear" name="minyear" class="form-control" >
                                     <option th:each="minprice : ${minyears}"
-                                        th:text="${minprice}">
+                                        th:text="${minprice}"
+                                        th:selected="${minprice==maxyearvalue}">
                                         Min Year</option>
                                 </select>
                             </div>
@@ -82,7 +85,8 @@
                             <div class="col-2">
                                 <select id="maxyear" name="maxyear" class="form-control" >
                                     <option th:each="minprice : ${maxyears}"
-                                            th:text="${minprice}">
+                                            th:text="${minprice}"
+                                            th:selected="${minprice==minyearvalue}">
                                         Max Year</option>
                                 </select>
                             </div>
@@ -133,7 +137,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="well"><img src="/test.jpg" class="rounded float-left" alt="...">
+                                        <div class="well"><img th:src="@{${car.getPictureURL()}}" class="rounded float-left" alt="..." width="300" height="150">
                                             <br/>
                                             <br/>
                                             <br/>
@@ -191,15 +195,12 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-10 text-right">
-                                        <div class="well"><a href="#" th:href="@{/admin/editCar(id=${car.getId()})}">Edit</a>
+                                    <div class="col-md-12 text-right">
+                                        <div class="well"><a href="#" th:href="@{/inventory/details(id=${car.getId()})}">Details</a>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-2 text-right">
-                                        <div class="well"><a href="#" th:href="@{/admin/deleteCar(id=${car.getId()})}">Delete</a>
-                                        </div>
-                                    </div>
+                                 
                                 </div>
 
                             </td>
