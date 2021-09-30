@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author pierre
  */
+
 @Repository
 public class CarsSearchDaoDbImpl implements CarsSearchDao
 {
