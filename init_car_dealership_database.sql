@@ -54,6 +54,7 @@ CREATE TABLE sales_information_record(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     s_i_names VARCHAR(50),
     s_i_phone VARCHAR(20),
+    s_i_email VARCHAR(50),
     s_i_street_1 VARCHAR(50),
     s_i_street_2 VARCHAR(50),
     s_i_city VARCHAR(20),
