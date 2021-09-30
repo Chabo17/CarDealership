@@ -97,7 +97,7 @@
     <div class = "row m-4 form-group">
     <h1>Sales Information</h1>
     </div>
-    
+    <form action="addUser" method="POST">
     <div class = "form-group row m-4">
         <label for="Name" class="col-4">
             Name
@@ -164,7 +164,7 @@
         </div>
     
         <div  class ="col-8">
-            <select>
+            <select id = "State">
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -239,25 +239,30 @@
             Purchase Price
         </label>
         
-        <label for="pPrice" class="col-8 col-form-label">
+        <label for="pType" class="col-8 col-form-label">
             Purchase Type
         </label>
     </div> 
     
-    <div class = "row m-4 col-4 form-group">
-        <input type ="text" name ="pPrice" id ="AddpPrice" class ="form-control" style="width: 400px;"/>
-        
-    </div>
-    <div class = "m-4 col-8 form-group">
-        <select class ="m-4 col-form-label">
-             <option value="BF">Bank Finance</option>
-             <option value="CA">Cash</option>
-             <option value="DF">Dealer Finance</option>
-        </select>
+    <div class = "row m-4 form-group col-form-label">
+        <div class = "col-4">
+            <input type ="number" name ="pPrice" id ="AddpPrice" class ="form-control" style="width: 400px;"/>
+        </div>
+        <div class = "col-8">
+            <select id = "Fin">
+                 <option value="BF">Bank Finance</option>
+                 <option value="CA">Cash</option>
+                 <option value="DF">Dealer Finance</option>
+            </select>
+        </div>
     </div>
     
-      
-      
+    <div>
+        <input type ="submit" value ="Submit">
+    </div>
+        
+    </form>
+    
     
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- use the the full jQuery build, NOT the slim build-->

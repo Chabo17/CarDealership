@@ -174,6 +174,7 @@ public class Sales_Information_Record_DaoDbImplTest {
         SR.setS_i_phone("456123789");
         SR.setS_i_state("Ca");
         SR.setS_i_zipcode("95020");
+        
         SR.setS_r_purchase_price(15000);
         SR.setS_r_purchase_type("That Type");
         

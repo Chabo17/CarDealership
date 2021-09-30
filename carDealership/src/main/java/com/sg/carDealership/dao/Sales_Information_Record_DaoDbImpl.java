@@ -63,6 +63,7 @@ public class Sales_Information_Record_DaoDbImpl implements Sales_Information_Rec
                 sir.getS_i_street_2(),
                 sir.getS_i_city(),
                 sir.getS_i_state(),
+                sir.getS_i_email(),
                 sir.getS_i_zipcode(),
                 sir.getS_r_purchase_price(),
                 sir.getS_r_purchase_type(),
