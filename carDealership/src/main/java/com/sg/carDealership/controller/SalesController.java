@@ -75,6 +75,8 @@ public class SalesController {
         sir.setS_r_purchase_price(Price);
         sir.setS_r_purchase_type(pType);
         
+        Sales.addSIR(sir);
+        
         return "redirect:/featured";
     }
     
