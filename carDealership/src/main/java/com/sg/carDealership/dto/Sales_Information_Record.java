@@ -36,6 +36,7 @@ public class Sales_Information_Record {
     private int id;
     private String s_i_names;
     private String s_i_phone;
+    private String s_i_email;
     private String s_i_street_1;
     private String s_i_street_2;
     private String s_i_city;
@@ -142,6 +143,16 @@ public class Sales_Information_Record {
         this.car_id = car_id;
     }
 
+    public String getS_i_email() {
+        return s_i_email;
+    }
+
+    public void setS_i_email(String s_i_email) {//setS_i_email
+        this.s_i_email = s_i_email;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -153,6 +164,7 @@ public class Sales_Information_Record {
         hash = 37 * hash + Objects.hashCode(this.s_i_city);
         hash = 37 * hash + Objects.hashCode(this.s_i_state);
         hash = 37 * hash + Objects.hashCode(this.s_i_zipcode);
+        hash = 37 * hash + Objects.hashCode(this.s_i_email);
         hash = 37 * hash + (int) (Double.doubleToLongBits(this.s_r_purchase_price) ^ (Double.doubleToLongBits(this.s_r_purchase_price) >>> 32));
         hash = 37 * hash + Objects.hashCode(this.s_r_purchase_type);
         hash = 37 * hash + this.user_id;
@@ -205,25 +217,19 @@ public class Sales_Information_Record {
         if (!Objects.equals(this.s_i_zipcode, other.s_i_zipcode)) {
             return false;
         }
+        if (!Objects.equals(this.s_i_email, other.s_i_email)) {
+            return false;
+        }
         if (!Objects.equals(this.s_r_purchase_type, other.s_r_purchase_type)) {
             return false;
         }
         return true;
     }
-
-    
-    
-    
+ 
     @Override
     public String toString() {
-        return "Sales_information_record{" + "id=" + id + ", s_i_names=" + s_i_names + ", s_i_phone=" + s_i_phone + ", s_i_street_1=" + s_i_street_1 + ", s_i_street_2=" + s_i_street_2 + ", s_i_city=" + s_i_city + ", s_i_state=" + s_i_state + ", s_i_zipcode=" + s_i_zipcode + ", s_r_purchase_price=" + s_r_purchase_price + ", s_r_purchase_type=" + s_r_purchase_type + ", user_id=" + user_id + ", car_id=" + car_id + '}';
-    }
-    
-    
-    
-    
-    
-    
-    
+        return "Sales_information_record{" + "id=" + id + ", s_i_names=" + s_i_names + ", s_i_phone=" + s_i_phone + ", s_i_email=" + s_i_email + ", s_i_street_1=" + s_i_street_1 + ", s_i_street_2=" + s_i_street_2 + ", s_i_city=" + s_i_city + ", s_i_state=" + s_i_state + ", s_i_zipcode=" + s_i_zipcode + ", s_r_purchase_price=" + s_r_purchase_price + ", s_r_purchase_type=" + s_r_purchase_type + ", user_id=" + user_id + ", car_id=" + car_id + '}';
+    }    
+
     
 }
