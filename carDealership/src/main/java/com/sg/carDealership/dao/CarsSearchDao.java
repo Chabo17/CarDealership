@@ -17,6 +17,8 @@ public interface CarsSearchDao
     
     List<Cars> getfilteredCars(String keyword);
     
+    // List<Cars> getNewFilteredCars(String keyword);
     
+    // List<Cars> getUsedFilteredCars(String keyword);
     
 }
