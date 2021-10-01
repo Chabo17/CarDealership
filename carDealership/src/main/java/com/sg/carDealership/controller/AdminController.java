@@ -380,11 +380,25 @@ public class AdminController {
         int id = Integer.parseInt(request.getParameter("id"));
         Cars car = carsDao.getCarById(id);
         
-        String[] makeList = {"Audi", "Honda", "China"};//dao get list of items
+        
+        
+        List<String> makeList = new ArrayList<>(Arrays.asList("Audi", "Honda", "China"));
+        List<Make> tempMake = makeDao.getAllMake();
+        for (int i = 0; i < tempMake.size(); i++) {
+            makeList.add(tempMake.get(i).getMake());
+        }
         model.addAttribute("makeList", makeList);
         
-        String[] modelList = {"A4", "S", "S3"};
+        List<String> modelList = new ArrayList<>(Arrays.asList("A4", "S", "S3"));
+        List<MyModel> tempModel = myModelDao.getAllMyModels();
+        for (int i = 0; i < tempModel.size(); i++) {
+            modelList.add(tempModel.get(i).getModel());
+        }
+        
         model.addAttribute("modelList", modelList);
+        
+        
+
         
         String[] typeList = {"New", "Used", "Broken"};
         model.addAttribute("typeList", typeList);
