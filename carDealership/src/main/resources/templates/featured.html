@@ -30,7 +30,7 @@
     <h1 id="headline">💲💲🤯 End of Course Sell 🤯💲💲</h1>
     <h2 id="headlineDescription">Check out this 🔥🔥 discount we got for <strong>YOU!</strong> Available until
         10/1/2021!</h2>
-    <a id="checkItOutButton" class="btn btn-primary btn-lg" href="#" role="button">Check it out!</a>
+    <a id="checkItOutButton" class="btn btn-primary btn-lg" href="/home/specials" role="button">Check it out!</a>
 </div>
 <!----Jumbotron End----->
 
@@ -38,28 +38,28 @@
 <div id="featured" th:if="${isLoaded}">
     <h2 id="featuredHeadline"> Featured Vehicles: </h2>
     <div class="parentBox">
-        <div class="smallBox"><img th:src="${cars[0].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[0].id})}"><img th:src="${cars[0].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[0].makeYear} + '  ' + ${cars[1].make} + ' ' + ${cars[0].model}"></span><br><span
                 th:text="'$' + ${cars[0].salesPrice}"></span></div>
-        <div class="smallBox"><img th:src="${cars[1].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[1].id})}"><img th:src="${cars[1].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[1].makeYear} + '  ' + ${cars[7].make} + ' ' + ${cars[1].model}"></span><br><span
                 th:text="'$' + ${cars[1].salesPrice}"></span></div>
-        <div class="smallBox"><img th:src="${cars[2].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[2].id})}"><img th:src="${cars[2].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[2].makeYear} + '  ' + ${cars[2].make} + ' ' + ${cars[2].model}"></span><br><span
                 th:text="'$' + ${cars[2].salesPrice}"></span></div>
-        <div class="smallBox"><img th:src="${cars[3].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[3].id})}"><img th:src="${cars[3].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[3].makeYear} + '  ' + ${cars[3].make} + ' ' + ${cars[3].model}"></span><br><span
                 th:text="'$' + ${cars[3].salesPrice}"></span></div>
-        <div class="smallBox"><img th:src="${cars[4].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[4].id})}"><img th:src="${cars[4].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[4].makeYear} + '  ' + ${cars[4].make} + ' ' + ${cars[4].model}"></span><br><span
                 th:text="'$' + ${cars[4].salesPrice}"></span></div>
-        <div class="smallBox"><img th:src="${cars[5].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[5].id})}"><img th:src="${cars[5].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[5].makeYear} + '  ' + ${cars[5].make} + ' ' + ${cars[5].model}"></span><br><span
                 th:text="'$' + ${cars[5].salesPrice}"></span></div>
-        <div class="smallBox"><img th:src="${cars[6].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[6].id})}"><img th:src="${cars[6].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[6].makeYear} + '  ' + ${cars[6].make} + ' ' + ${cars[6].model}"></span><br><span
                 th:text="'$' + ${cars[6].salesPrice}"></span></div>
-        <div class="smallBox"><img th:src="${cars[7].pictureURL}" width="275" height="183"><br><span
+        <div class="smallBox"><a href="#" th:href="@{/inventory/details(id=${cars[7].id})}"><img th:src="${cars[7].pictureURL}" width="275" height="183"></a><br><span
                 th:text="${cars[7].makeYear} + '  ' + ${cars[7].make} + ' ' + ${cars[7].model}"></span><br><span
                 th:text="'$' + ${cars[7].salesPrice}"></span></div>
     </div>
