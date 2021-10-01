@@ -310,10 +310,10 @@ public class AdminController {
         String[] transList = {"Automatic", "Manual"};
         model.addAttribute("transList", transList);
         
-        String[] colorList = {"Black", "Red", "White"};
+        String[] colorList = {"Black", "Red", "White", "Blue", "Silver"};
         model.addAttribute("colorList", colorList);
         
-        String[] interList = {"Gold", "Black", "Silver"};
+        String[] interList = {"Gold", "Black", "Silver", "Tan"};
         model.addAttribute("interList", interList);
         
         return "addCar";
