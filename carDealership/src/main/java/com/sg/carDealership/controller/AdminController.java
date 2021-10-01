@@ -286,14 +286,14 @@ public class AdminController {
     @GetMapping("addCar")
     public String addCarForm(Model model) {
         
-        List<String> makeList = new ArrayList<>(Arrays.asList("Audi", "Honda", "China"));
+        List<String> makeList = new ArrayList<>(Arrays.asList("Audi", "Honda", "China", "Toyota","Porsche","Ford","Lexus"));
         List<Make> tempMake = makeDao.getAllMake();
         for (int i = 0; i < tempMake.size(); i++) {
             makeList.add(tempMake.get(i).getMake());
         }
         model.addAttribute("makeList", makeList);
         
-        List<String> modelList = new ArrayList<>(Arrays.asList("A4", "S", "S3"));
+        List<String> modelList = new ArrayList<>(Arrays.asList("A4", "S", "S3","Civic", "RAV4","Camry","911","F-150","RX"));
         List<MyModel> tempModel = myModelDao.getAllMyModels();
         for (int i = 0; i < tempModel.size(); i++) {
             modelList.add(tempModel.get(i).getModel());
