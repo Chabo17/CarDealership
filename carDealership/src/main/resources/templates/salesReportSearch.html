@@ -36,9 +36,9 @@
         <br>
         <form action="/reports/salesReport/search" method="GET">
             <div class="row col-md-12 m-3">
-                <label for="userNames" class="col-form-label">
+                <label for="userName" class="col-form-label">
                     User</label>
-                <select id="userNames" name="userNames" class="form-control"  style="max-width:15%; margin-right: 5px; margin-left: 5px">
+                <select id="userName" name="userName" class="form-control"  style="max-width:15%; margin-right: 5px; margin-left: 5px">
                     <option th:each="userName : ${userNames}"
                             th:text="${userName.firstName + ' ' + userName.lastName}">
                         Min Price
@@ -85,7 +85,7 @@
             <td th:text="${user.getEmail()}">Email</td>
             <td th:text="${user.getUserRole()}">Role</td>
             <!--            <td th:text="${user.totalVehicles}">Total Vehicles</td>-->
-<!--            <td th:text="${user.totalSales}">Total Sales</td>-->
+            <!--            <td th:text="${user.totalSales}">Total Sales</td>-->
         </tr>
         </tbody>
     </table>
