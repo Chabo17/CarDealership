@@ -49,9 +49,9 @@ public class ReportController {
 
     @GetMapping("salesReport/search")
     public String salesReport(Model model, HttpServletRequest request) {
-        String users1 = request.getParameter("users");
-        List<Users> users = usersDao.getAllUsers();
-        model.addAttribute("users", users);
+        String keyword = request.getParameter("userId");
+        Users user = usersDao.getUserById(Integer.parseInt(keyword));
+        model.addAttribute("users", user);
         return "salesReportSearch";
     }
 }
